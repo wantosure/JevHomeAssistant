@@ -24,8 +24,8 @@ INPUT_PRICE_PER_MILLION = 0.042
 LOCK = threading.RLock()
 COST_LOCK = threading.RLock()
 RATE_LOCK = threading.Lock()
-RATE_WINDOW_SECONDS = 3600
-RATE_LIMIT_PER_IP = 20
+RATE_WINDOW_SECONDS = 60
+RATE_LIMIT_PER_IP = 10
 REQUEST_TIMES = defaultdict(deque)
 STATIC = {"/": (ROOT / "index.html", "text/html; charset=utf-8"),
           "/index.html": (ROOT / "index.html", "text/html; charset=utf-8"),
@@ -407,7 +407,7 @@ class Handler(BaseHTTPRequestHandler):
             if origin_host not in local_hosts and (not request_host or origin_host != request_host):
                 return self.send_json(403, {"error": "来源不匹配"})
         if not self.allow_request():
-            return self.send_json(429, {"error": "此体验链接每个 IP 每小时最多提交 20 次，请稍后再试。"})
+            return self.send_json(429, {"error": "此体验链接每个 IP 每分钟最多提交 10 次，请稍后再试。"})
         try:
             length = int(self.headers.get("Content-Length", "0"))
             if length > 20000: return self.send_json(413, {"error": "请求内容过长"})
