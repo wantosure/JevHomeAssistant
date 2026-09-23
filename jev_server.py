@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 from numeric_values import numeric_candidates
+from group_control import is_group_command, group_events
 import re
 import secrets
 import threading
@@ -193,9 +194,16 @@ def events_for(text, threshold=0.35, room_context=None, preferred_device_type=No
     if isinstance(conf, (int, float)) and conf < threshold:
         yield {"kind": "result", "status": "clarify", "text": "业务分类置信度较低，已停止执行。请换一种说法。"}
         return
-    if any(term in text for term in ("所有", "全部", "全屋", "整个家", "每个", "各个", "都关", "全关")):
-        yield {"kind": "log", "level": "info", "message": "检测到群组/全屋指令；当前演示仅执行单设备，已阻止部分执行。"}
-        yield {"kind": "result", "status": "clarify", "text": "当前演示支持单设备控制。为避免只执行群组命令的一部分，请指定一个设备；群组控制尚未启用。"}
+    if is_group_command(text):
+        for event in group_events(text, threshold, room_context, DATA, STATES, api_call, rid):
+            if event["kind"] == "execute_batch":
+                with LOCK:
+                    for result in event["results"]:
+                        STATES[result["device_id"]] = result["after"]
+                    tmp = STATE_FILE.with_suffix(".tmp")
+                    tmp.write_text(json.dumps(STATES, ensure_ascii=False, indent=2), encoding="utf-8")
+                    tmp.replace(STATE_FILE)
+            yield event
         return
 
     candidates = []
