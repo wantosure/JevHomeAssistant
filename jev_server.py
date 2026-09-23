@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from numeric_values import numeric_candidates
 import re
 import secrets
 import threading
@@ -213,7 +214,8 @@ def events_for(text, threshold=0.35, room_context=None, preferred_device_type=No
         candidates.append((d, desc))
     device_options = {d["id"]: desc for d, desc in candidates}
     device_options["none"] = "没有候选设备适合该指令，或用户没有指定可确定的设备。"
-    numeric = list(dict.fromkeys(re.findall(r"(?<![0-9.])-?\d+(?:\.\d+)?", text)))
+    numeric = numeric_candidates(text)
+    yield {"kind": "log", "level": "info", "message": f"提取数值候选：{'、'.join(numeric) or '无'}（中文数字已转换；由 Jev 选择对应属性）"}
     value_options = {f"n{i}": f'原文数值“{v}”，只能用于用户实际指定且该设备支持的参数。'
                      for i, v in enumerate(numeric)}
     # Every writable capability is a separate atomic decision. Irrelevant keys return no_change.
