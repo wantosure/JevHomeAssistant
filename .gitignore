@@ -1,0 +1,10 @@
+.key
+.device-state.json
+.device-state.tmp
+__pycache__/
+*.pyc
+.jev-costs.json
+.jev-costs.tmp
+
+.npm-cache/
+cloudflared.exe

@@ -1,0 +1,4291 @@
+{
+  "schemaVersion": 1,
+  "simulated": true,
+  "rooms": [
+    {
+      "id": "master",
+      "name": "主卧",
+      "area": 18
+    },
+    {
+      "id": "guest",
+      "name": "次卧",
+      "area": 13
+    },
+    {
+      "id": "child",
+      "name": "儿童房",
+      "area": 13
+    },
+    {
+      "id": "living",
+      "name": "客厅",
+      "area": 32
+    },
+    {
+      "id": "kitchen",
+      "name": "厨房",
+      "area": 8
+    },
+    {
+      "id": "bath1",
+      "name": "主卫",
+      "area": 5
+    },
+    {
+      "id": "bath2",
+      "name": "客卫",
+      "area": 4
+    },
+    {
+      "id": "balcony",
+      "name": "阳台",
+      "area": 7
+    },
+    {
+      "id": "entry",
+      "name": "玄关",
+      "area": 4
+    }
+  ],
+  "devices": [
+    {
+      "id": "MJ-001",
+      "name": "主卧主灯",
+      "shortName": "主灯",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 0,
+      "controllable": true
+    },
+    {
+      "id": "MJ-002",
+      "name": "主卧左床头灯",
+      "shortName": "左床头灯",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 1,
+      "controllable": true
+    },
+    {
+      "id": "MJ-003",
+      "name": "主卧右床头灯",
+      "shortName": "右床头灯",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 2,
+      "controllable": true
+    },
+    {
+      "id": "MJ-004",
+      "name": "主卧衣柜灯带",
+      "shortName": "衣柜灯带",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "strip",
+      "type": "灯带",
+      "icon": "〰",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 40
+        },
+        {
+          "key": "hue",
+          "label": "色相",
+          "kind": "write",
+          "min": 0,
+          "max": 359,
+          "step": 1,
+          "unit": "°",
+          "value": 35
+        }
+      ],
+      "indexInRoom": 3,
+      "controllable": true
+    },
+    {
+      "id": "MJ-005",
+      "name": "主卧床底灯带",
+      "shortName": "床底灯带",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "strip",
+      "type": "灯带",
+      "icon": "〰",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 40
+        },
+        {
+          "key": "hue",
+          "label": "色相",
+          "kind": "write",
+          "min": 0,
+          "max": 359,
+          "step": 1,
+          "unit": "°",
+          "value": 35
+        }
+      ],
+      "indexInRoom": 4,
+      "controllable": true
+    },
+    {
+      "id": "MJ-006",
+      "name": "主卧空调",
+      "shortName": "空调",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "ac",
+      "type": "空调",
+      "icon": "❄",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "mode",
+          "label": "模式",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "cool",
+          "values": {
+            "cool": "制冷",
+            "heat": "制热",
+            "dry": "除湿",
+            "fan": "送风",
+            "auto": "自动"
+          }
+        },
+        {
+          "key": "target_temperature",
+          "label": "设定温度",
+          "kind": "write",
+          "min": 16,
+          "max": 30,
+          "step": 1,
+          "unit": "℃",
+          "value": 25
+        },
+        {
+          "key": "fan_speed",
+          "label": "风速",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "auto",
+          "values": {
+            "auto": "自动",
+            "low": "低风",
+            "medium": "中风",
+            "high": "高风"
+          }
+        }
+      ],
+      "indexInRoom": 5,
+      "controllable": true
+    },
+    {
+      "id": "MJ-007",
+      "name": "主卧遮光帘",
+      "shortName": "遮光帘",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "curtain",
+      "type": "窗帘",
+      "icon": "▥",
+      "capabilities": [
+        {
+          "key": "motion",
+          "label": "动作",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "open": "打开",
+            "close": "关闭",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "position",
+          "label": "开合度",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 75
+        }
+      ],
+      "indexInRoom": 6,
+      "controllable": true
+    },
+    {
+      "id": "MJ-008",
+      "name": "主卧纱帘",
+      "shortName": "纱帘",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "curtain",
+      "type": "窗帘",
+      "icon": "▥",
+      "capabilities": [
+        {
+          "key": "motion",
+          "label": "动作",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "open": "打开",
+            "close": "关闭",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "position",
+          "label": "开合度",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 75
+        }
+      ],
+      "indexInRoom": 7,
+      "controllable": true
+    },
+    {
+      "id": "MJ-009",
+      "name": "主卧音箱",
+      "shortName": "音箱",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "speaker",
+      "type": "音箱",
+      "icon": "♫",
+      "capabilities": [
+        {
+          "key": "playback",
+          "label": "播放",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "pause",
+          "values": {
+            "play": "播放",
+            "pause": "暂停",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "volume",
+          "label": "音量",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 35
+        }
+      ],
+      "indexInRoom": 8,
+      "controllable": true
+    },
+    {
+      "id": "MJ-010",
+      "name": "主卧加湿器",
+      "shortName": "加湿器",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "humidifier",
+      "type": "加湿器",
+      "icon": "♨",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "target_humidity",
+          "label": "目标湿度",
+          "kind": "write",
+          "min": 30,
+          "max": 80,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "level",
+          "label": "雾量",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "medium",
+          "values": {
+            "low": "低",
+            "medium": "中",
+            "high": "高"
+          }
+        }
+      ],
+      "indexInRoom": 9,
+      "controllable": true
+    },
+    {
+      "id": "MJ-011",
+      "name": "主卧温湿度计",
+      "shortName": "温湿度计",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "temp",
+      "type": "温湿度传感器",
+      "icon": "◌",
+      "capabilities": [
+        {
+          "key": "temperature",
+          "label": "温度",
+          "kind": "read",
+          "min": -20,
+          "max": 60,
+          "step": 0.1,
+          "unit": "℃",
+          "value": 24.6
+        },
+        {
+          "key": "humidity",
+          "label": "湿度",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 48
+        }
+      ],
+      "indexInRoom": 10,
+      "controllable": false
+    },
+    {
+      "id": "MJ-012",
+      "name": "主卧人体传感器",
+      "shortName": "人体传感器",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "motion",
+      "type": "人体传感器",
+      "icon": "◎",
+      "capabilities": [
+        {
+          "key": "presence",
+          "label": "有人状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "无人",
+            "1": "有人"
+          }
+        },
+        {
+          "key": "illuminance",
+          "label": "照度",
+          "kind": "read",
+          "min": 0,
+          "max": 10000,
+          "step": 1,
+          "unit": "lx",
+          "value": 120
+        }
+      ],
+      "indexInRoom": 11,
+      "controllable": false
+    },
+    {
+      "id": "MJ-013",
+      "name": "主卧窗户门磁",
+      "shortName": "窗户门磁",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "contact",
+      "type": "门窗传感器",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "contact",
+          "label": "开合状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "关闭",
+            "1": "打开"
+          }
+        },
+        {
+          "key": "battery",
+          "label": "电量",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 92
+        }
+      ],
+      "indexInRoom": 12,
+      "controllable": false
+    },
+    {
+      "id": "MJ-014",
+      "name": "主卧左床头插座",
+      "shortName": "左床头插座",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "▤",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "power_w",
+          "label": "功率",
+          "kind": "read",
+          "min": 0,
+          "max": 2500,
+          "step": 1,
+          "unit": "W",
+          "value": 32
+        }
+      ],
+      "indexInRoom": 13,
+      "controllable": true
+    },
+    {
+      "id": "MJ-015",
+      "name": "主卧右床头插座",
+      "shortName": "右床头插座",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "▤",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "power_w",
+          "label": "功率",
+          "kind": "read",
+          "min": 0,
+          "max": 2500,
+          "step": 1,
+          "unit": "W",
+          "value": 32
+        }
+      ],
+      "indexInRoom": 14,
+      "controllable": true
+    },
+    {
+      "id": "MJ-016",
+      "name": "主卧床头无线按钮",
+      "shortName": "床头无线按钮",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "button",
+      "type": "无线按钮",
+      "icon": "⊙",
+      "capabilities": [
+        {
+          "key": "event",
+          "label": "按键事件",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "none",
+          "values": {
+            "single": "单击",
+            "double": "双击",
+            "hold": "长按",
+            "none": "无事件"
+          }
+        }
+      ],
+      "indexInRoom": 15,
+      "controllable": false
+    },
+    {
+      "id": "MJ-017",
+      "name": "次卧主灯",
+      "shortName": "主灯",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 0,
+      "controllable": true
+    },
+    {
+      "id": "MJ-018",
+      "name": "次卧床头灯",
+      "shortName": "床头灯",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 1,
+      "controllable": true
+    },
+    {
+      "id": "MJ-019",
+      "name": "次卧书桌台灯",
+      "shortName": "书桌台灯",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 2,
+      "controllable": true
+    },
+    {
+      "id": "MJ-020",
+      "name": "次卧空调",
+      "shortName": "空调",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "ac",
+      "type": "空调",
+      "icon": "❄",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "mode",
+          "label": "模式",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "cool",
+          "values": {
+            "cool": "制冷",
+            "heat": "制热",
+            "dry": "除湿",
+            "fan": "送风",
+            "auto": "自动"
+          }
+        },
+        {
+          "key": "target_temperature",
+          "label": "设定温度",
+          "kind": "write",
+          "min": 16,
+          "max": 30,
+          "step": 1,
+          "unit": "℃",
+          "value": 25
+        },
+        {
+          "key": "fan_speed",
+          "label": "风速",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "auto",
+          "values": {
+            "auto": "自动",
+            "low": "低风",
+            "medium": "中风",
+            "high": "高风"
+          }
+        }
+      ],
+      "indexInRoom": 3,
+      "controllable": true
+    },
+    {
+      "id": "MJ-021",
+      "name": "次卧窗帘",
+      "shortName": "窗帘",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "curtain",
+      "type": "窗帘",
+      "icon": "▥",
+      "capabilities": [
+        {
+          "key": "motion",
+          "label": "动作",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "open": "打开",
+            "close": "关闭",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "position",
+          "label": "开合度",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 75
+        }
+      ],
+      "indexInRoom": 4,
+      "controllable": true
+    },
+    {
+      "id": "MJ-022",
+      "name": "次卧音箱",
+      "shortName": "音箱",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "speaker",
+      "type": "音箱",
+      "icon": "♫",
+      "capabilities": [
+        {
+          "key": "playback",
+          "label": "播放",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "pause",
+          "values": {
+            "play": "播放",
+            "pause": "暂停",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "volume",
+          "label": "音量",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 35
+        }
+      ],
+      "indexInRoom": 5,
+      "controllable": true
+    },
+    {
+      "id": "MJ-023",
+      "name": "次卧净化器",
+      "shortName": "净化器",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "purifier",
+      "type": "净化器",
+      "icon": "♧",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "mode",
+          "label": "模式",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "auto",
+          "values": {
+            "auto": "自动",
+            "sleep": "睡眠",
+            "manual": "手动"
+          }
+        },
+        {
+          "key": "pm25",
+          "label": "PM2.5",
+          "kind": "read",
+          "min": 0,
+          "max": 600,
+          "step": 1,
+          "unit": "μg/m³",
+          "value": 12
+        }
+      ],
+      "indexInRoom": 6,
+      "controllable": true
+    },
+    {
+      "id": "MJ-024",
+      "name": "次卧温湿度计",
+      "shortName": "温湿度计",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "temp",
+      "type": "温湿度传感器",
+      "icon": "◌",
+      "capabilities": [
+        {
+          "key": "temperature",
+          "label": "温度",
+          "kind": "read",
+          "min": -20,
+          "max": 60,
+          "step": 0.1,
+          "unit": "℃",
+          "value": 24.6
+        },
+        {
+          "key": "humidity",
+          "label": "湿度",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 48
+        }
+      ],
+      "indexInRoom": 7,
+      "controllable": false
+    },
+    {
+      "id": "MJ-025",
+      "name": "次卧窗户门磁",
+      "shortName": "窗户门磁",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "contact",
+      "type": "门窗传感器",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "contact",
+          "label": "开合状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "关闭",
+            "1": "打开"
+          }
+        },
+        {
+          "key": "battery",
+          "label": "电量",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 92
+        }
+      ],
+      "indexInRoom": 8,
+      "controllable": false
+    },
+    {
+      "id": "MJ-026",
+      "name": "次卧书桌插座",
+      "shortName": "书桌插座",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "▤",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "power_w",
+          "label": "功率",
+          "kind": "read",
+          "min": 0,
+          "max": 2500,
+          "step": 1,
+          "unit": "W",
+          "value": 32
+        }
+      ],
+      "indexInRoom": 9,
+      "controllable": true
+    },
+    {
+      "id": "MJ-027",
+      "name": "次卧床头插座",
+      "shortName": "床头插座",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "▤",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "power_w",
+          "label": "功率",
+          "kind": "read",
+          "min": 0,
+          "max": 2500,
+          "step": 1,
+          "unit": "W",
+          "value": 32
+        }
+      ],
+      "indexInRoom": 10,
+      "controllable": true
+    },
+    {
+      "id": "MJ-028",
+      "name": "次卧墙壁开关",
+      "shortName": "墙壁开关",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "switch",
+      "type": "墙壁开关",
+      "icon": "▣",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        }
+      ],
+      "indexInRoom": 11,
+      "controllable": true
+    },
+    {
+      "id": "MJ-029",
+      "name": "儿童房主灯",
+      "shortName": "主灯",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 0,
+      "controllable": true
+    },
+    {
+      "id": "MJ-030",
+      "name": "儿童房护眼台灯",
+      "shortName": "护眼台灯",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 1,
+      "controllable": true
+    },
+    {
+      "id": "MJ-031",
+      "name": "儿童房床边夜灯",
+      "shortName": "床边夜灯",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 2,
+      "controllable": true
+    },
+    {
+      "id": "MJ-032",
+      "name": "儿童房空调",
+      "shortName": "空调",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "ac",
+      "type": "空调",
+      "icon": "❄",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "mode",
+          "label": "模式",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "cool",
+          "values": {
+            "cool": "制冷",
+            "heat": "制热",
+            "dry": "除湿",
+            "fan": "送风",
+            "auto": "自动"
+          }
+        },
+        {
+          "key": "target_temperature",
+          "label": "设定温度",
+          "kind": "write",
+          "min": 16,
+          "max": 30,
+          "step": 1,
+          "unit": "℃",
+          "value": 25
+        },
+        {
+          "key": "fan_speed",
+          "label": "风速",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "auto",
+          "values": {
+            "auto": "自动",
+            "low": "低风",
+            "medium": "中风",
+            "high": "高风"
+          }
+        }
+      ],
+      "indexInRoom": 3,
+      "controllable": true
+    },
+    {
+      "id": "MJ-033",
+      "name": "儿童房窗帘",
+      "shortName": "窗帘",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "curtain",
+      "type": "窗帘",
+      "icon": "▥",
+      "capabilities": [
+        {
+          "key": "motion",
+          "label": "动作",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "open": "打开",
+            "close": "关闭",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "position",
+          "label": "开合度",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 75
+        }
+      ],
+      "indexInRoom": 4,
+      "controllable": true
+    },
+    {
+      "id": "MJ-034",
+      "name": "儿童房音箱",
+      "shortName": "音箱",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "speaker",
+      "type": "音箱",
+      "icon": "♫",
+      "capabilities": [
+        {
+          "key": "playback",
+          "label": "播放",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "pause",
+          "values": {
+            "play": "播放",
+            "pause": "暂停",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "volume",
+          "label": "音量",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 35
+        }
+      ],
+      "indexInRoom": 5,
+      "controllable": true
+    },
+    {
+      "id": "MJ-035",
+      "name": "儿童房净化器",
+      "shortName": "净化器",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "purifier",
+      "type": "净化器",
+      "icon": "♧",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "mode",
+          "label": "模式",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "auto",
+          "values": {
+            "auto": "自动",
+            "sleep": "睡眠",
+            "manual": "手动"
+          }
+        },
+        {
+          "key": "pm25",
+          "label": "PM2.5",
+          "kind": "read",
+          "min": 0,
+          "max": 600,
+          "step": 1,
+          "unit": "μg/m³",
+          "value": 12
+        }
+      ],
+      "indexInRoom": 6,
+      "controllable": true
+    },
+    {
+      "id": "MJ-036",
+      "name": "儿童房温湿度计",
+      "shortName": "温湿度计",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "temp",
+      "type": "温湿度传感器",
+      "icon": "◌",
+      "capabilities": [
+        {
+          "key": "temperature",
+          "label": "温度",
+          "kind": "read",
+          "min": -20,
+          "max": 60,
+          "step": 0.1,
+          "unit": "℃",
+          "value": 24.6
+        },
+        {
+          "key": "humidity",
+          "label": "湿度",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 48
+        }
+      ],
+      "indexInRoom": 7,
+      "controllable": false
+    },
+    {
+      "id": "MJ-037",
+      "name": "儿童房人体传感器",
+      "shortName": "人体传感器",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "motion",
+      "type": "人体传感器",
+      "icon": "◎",
+      "capabilities": [
+        {
+          "key": "presence",
+          "label": "有人状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "无人",
+            "1": "有人"
+          }
+        },
+        {
+          "key": "illuminance",
+          "label": "照度",
+          "kind": "read",
+          "min": 0,
+          "max": 10000,
+          "step": 1,
+          "unit": "lx",
+          "value": 120
+        }
+      ],
+      "indexInRoom": 8,
+      "controllable": false
+    },
+    {
+      "id": "MJ-038",
+      "name": "儿童房窗户门磁",
+      "shortName": "窗户门磁",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "contact",
+      "type": "门窗传感器",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "contact",
+          "label": "开合状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "关闭",
+            "1": "打开"
+          }
+        },
+        {
+          "key": "battery",
+          "label": "电量",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 92
+        }
+      ],
+      "indexInRoom": 9,
+      "controllable": false
+    },
+    {
+      "id": "MJ-039",
+      "name": "儿童房书桌插座",
+      "shortName": "书桌插座",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "▤",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "power_w",
+          "label": "功率",
+          "kind": "read",
+          "min": 0,
+          "max": 2500,
+          "step": 1,
+          "unit": "W",
+          "value": 32
+        }
+      ],
+      "indexInRoom": 10,
+      "controllable": true
+    },
+    {
+      "id": "MJ-040",
+      "name": "儿童房床头无线按钮",
+      "shortName": "床头无线按钮",
+      "room": "儿童房",
+      "roomId": "child",
+      "profile": "button",
+      "type": "无线按钮",
+      "icon": "⊙",
+      "capabilities": [
+        {
+          "key": "event",
+          "label": "按键事件",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "none",
+          "values": {
+            "single": "单击",
+            "double": "双击",
+            "hold": "长按",
+            "none": "无事件"
+          }
+        }
+      ],
+      "indexInRoom": 11,
+      "controllable": false
+    },
+    {
+      "id": "MJ-041",
+      "name": "客厅主灯",
+      "shortName": "主灯",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 0,
+      "controllable": true
+    },
+    {
+      "id": "MJ-042",
+      "name": "客厅沙发阅读灯",
+      "shortName": "沙发阅读灯",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 1,
+      "controllable": true
+    },
+    {
+      "id": "MJ-043",
+      "name": "客厅电视墙灯带",
+      "shortName": "电视墙灯带",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "strip",
+      "type": "灯带",
+      "icon": "〰",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 40
+        },
+        {
+          "key": "hue",
+          "label": "色相",
+          "kind": "write",
+          "min": 0,
+          "max": 359,
+          "step": 1,
+          "unit": "°",
+          "value": 35
+        }
+      ],
+      "indexInRoom": 2,
+      "controllable": true
+    },
+    {
+      "id": "MJ-044",
+      "name": "客厅餐桌吊灯",
+      "shortName": "餐桌吊灯",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 3,
+      "controllable": true
+    },
+    {
+      "id": "MJ-045",
+      "name": "客厅玄关过道灯",
+      "shortName": "玄关过道灯",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 4,
+      "controllable": true
+    },
+    {
+      "id": "MJ-046",
+      "name": "客厅空调",
+      "shortName": "空调",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "ac",
+      "type": "空调",
+      "icon": "❄",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "mode",
+          "label": "模式",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "cool",
+          "values": {
+            "cool": "制冷",
+            "heat": "制热",
+            "dry": "除湿",
+            "fan": "送风",
+            "auto": "自动"
+          }
+        },
+        {
+          "key": "target_temperature",
+          "label": "设定温度",
+          "kind": "write",
+          "min": 16,
+          "max": 30,
+          "step": 1,
+          "unit": "℃",
+          "value": 25
+        },
+        {
+          "key": "fan_speed",
+          "label": "风速",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "auto",
+          "values": {
+            "auto": "自动",
+            "low": "低风",
+            "medium": "中风",
+            "high": "高风"
+          }
+        }
+      ],
+      "indexInRoom": 5,
+      "controllable": true
+    },
+    {
+      "id": "MJ-047",
+      "name": "客厅电视",
+      "shortName": "电视",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "tv",
+      "type": "电视",
+      "icon": "▰",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "volume",
+          "label": "音量",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 20
+        },
+        {
+          "key": "source",
+          "label": "信号源",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "home",
+          "values": {
+            "home": "主页",
+            "hdmi1": "HDMI 1",
+            "hdmi2": "HDMI 2"
+          }
+        }
+      ],
+      "indexInRoom": 6,
+      "controllable": true
+    },
+    {
+      "id": "MJ-048",
+      "name": "客厅音箱",
+      "shortName": "音箱",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "speaker",
+      "type": "音箱",
+      "icon": "♫",
+      "capabilities": [
+        {
+          "key": "playback",
+          "label": "播放",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "pause",
+          "values": {
+            "play": "播放",
+            "pause": "暂停",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "volume",
+          "label": "音量",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 35
+        }
+      ],
+      "indexInRoom": 7,
+      "controllable": true
+    },
+    {
+      "id": "MJ-049",
+      "name": "客厅左窗帘",
+      "shortName": "左窗帘",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "curtain",
+      "type": "窗帘",
+      "icon": "▥",
+      "capabilities": [
+        {
+          "key": "motion",
+          "label": "动作",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "open": "打开",
+            "close": "关闭",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "position",
+          "label": "开合度",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 75
+        }
+      ],
+      "indexInRoom": 8,
+      "controllable": true
+    },
+    {
+      "id": "MJ-050",
+      "name": "客厅右窗帘",
+      "shortName": "右窗帘",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "curtain",
+      "type": "窗帘",
+      "icon": "▥",
+      "capabilities": [
+        {
+          "key": "motion",
+          "label": "动作",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "open": "打开",
+            "close": "关闭",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "position",
+          "label": "开合度",
+          "kind": "write",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 75
+        }
+      ],
+      "indexInRoom": 9,
+      "controllable": true
+    },
+    {
+      "id": "MJ-051",
+      "name": "客厅净化器",
+      "shortName": "净化器",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "purifier",
+      "type": "净化器",
+      "icon": "♧",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "mode",
+          "label": "模式",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "auto",
+          "values": {
+            "auto": "自动",
+            "sleep": "睡眠",
+            "manual": "手动"
+          }
+        },
+        {
+          "key": "pm25",
+          "label": "PM2.5",
+          "kind": "read",
+          "min": 0,
+          "max": 600,
+          "step": 1,
+          "unit": "μg/m³",
+          "value": 12
+        }
+      ],
+      "indexInRoom": 10,
+      "controllable": true
+    },
+    {
+      "id": "MJ-052",
+      "name": "客厅落地风扇",
+      "shortName": "落地风扇",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "fan",
+      "type": "风扇",
+      "icon": "✣",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "speed",
+          "label": "风速",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 35
+        },
+        {
+          "key": "oscillation",
+          "label": "摇头",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "1",
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        }
+      ],
+      "indexInRoom": 11,
+      "controllable": true
+    },
+    {
+      "id": "MJ-053",
+      "name": "客厅扫地机器人",
+      "shortName": "扫地机器人",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "robot",
+      "type": "扫地机器人",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "task",
+          "label": "任务",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "dock",
+          "values": {
+            "clean": "开始清扫",
+            "pause": "暂停",
+            "dock": "回充"
+          }
+        },
+        {
+          "key": "suction",
+          "label": "吸力",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "normal",
+          "values": {
+            "quiet": "安静",
+            "normal": "标准",
+            "strong": "强力"
+          }
+        },
+        {
+          "key": "battery",
+          "label": "电量",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 88
+        }
+      ],
+      "indexInRoom": 12,
+      "controllable": true
+    },
+    {
+      "id": "MJ-054",
+      "name": "客厅宠物喂食器",
+      "shortName": "宠物喂食器",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "feeder",
+      "type": "喂食器",
+      "icon": "♙",
+      "capabilities": [
+        {
+          "key": "feed",
+          "label": "单次出粮",
+          "kind": "write",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "unit": "份",
+          "value": 2
+        },
+        {
+          "key": "remaining",
+          "label": "余粮",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 70
+        }
+      ],
+      "indexInRoom": 13,
+      "controllable": true
+    },
+    {
+      "id": "MJ-055",
+      "name": "客厅温湿度计",
+      "shortName": "温湿度计",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "temp",
+      "type": "温湿度传感器",
+      "icon": "◌",
+      "capabilities": [
+        {
+          "key": "temperature",
+          "label": "温度",
+          "kind": "read",
+          "min": -20,
+          "max": 60,
+          "step": 0.1,
+          "unit": "℃",
+          "value": 24.6
+        },
+        {
+          "key": "humidity",
+          "label": "湿度",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 48
+        }
+      ],
+      "indexInRoom": 14,
+      "controllable": false
+    },
+    {
+      "id": "MJ-056",
+      "name": "客厅人体传感器",
+      "shortName": "人体传感器",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "motion",
+      "type": "人体传感器",
+      "icon": "◎",
+      "capabilities": [
+        {
+          "key": "presence",
+          "label": "有人状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "无人",
+            "1": "有人"
+          }
+        },
+        {
+          "key": "illuminance",
+          "label": "照度",
+          "kind": "read",
+          "min": 0,
+          "max": 10000,
+          "step": 1,
+          "unit": "lx",
+          "value": 120
+        }
+      ],
+      "indexInRoom": 15,
+      "controllable": false
+    },
+    {
+      "id": "MJ-057",
+      "name": "客厅阳台门磁",
+      "shortName": "阳台门磁",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "contact",
+      "type": "门窗传感器",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "contact",
+          "label": "开合状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "关闭",
+            "1": "打开"
+          }
+        },
+        {
+          "key": "battery",
+          "label": "电量",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 92
+        }
+      ],
+      "indexInRoom": 16,
+      "controllable": false
+    },
+    {
+      "id": "MJ-058",
+      "name": "客厅电视柜插座",
+      "shortName": "电视柜插座",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "▤",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "power_w",
+          "label": "功率",
+          "kind": "read",
+          "min": 0,
+          "max": 2500,
+          "step": 1,
+          "unit": "W",
+          "value": 32
+        }
+      ],
+      "indexInRoom": 17,
+      "controllable": true
+    },
+    {
+      "id": "MJ-059",
+      "name": "客厅沙发插座",
+      "shortName": "沙发插座",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "▤",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "power_w",
+          "label": "功率",
+          "kind": "read",
+          "min": 0,
+          "max": 2500,
+          "step": 1,
+          "unit": "W",
+          "value": 32
+        }
+      ],
+      "indexInRoom": 18,
+      "controllable": true
+    },
+    {
+      "id": "MJ-060",
+      "name": "客厅场景按钮",
+      "shortName": "场景按钮",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "button",
+      "type": "无线按钮",
+      "icon": "⊙",
+      "capabilities": [
+        {
+          "key": "event",
+          "label": "按键事件",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "none",
+          "values": {
+            "single": "单击",
+            "double": "双击",
+            "hold": "长按",
+            "none": "无事件"
+          }
+        }
+      ],
+      "indexInRoom": 19,
+      "controllable": false
+    },
+    {
+      "id": "MJ-061",
+      "name": "厨房吸顶灯",
+      "shortName": "吸顶灯",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 0,
+      "controllable": true
+    },
+    {
+      "id": "MJ-062",
+      "name": "厨房橱柜灯带",
+      "shortName": "橱柜灯带",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "strip",
+      "type": "灯带",
+      "icon": "〰",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 40
+        },
+        {
+          "key": "hue",
+          "label": "色相",
+          "kind": "write",
+          "min": 0,
+          "max": 359,
+          "step": 1,
+          "unit": "°",
+          "value": 35
+        }
+      ],
+      "indexInRoom": 1,
+      "controllable": true
+    },
+    {
+      "id": "MJ-063",
+      "name": "厨房冰箱",
+      "shortName": "冰箱",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "fridge",
+      "type": "冰箱",
+      "icon": "▯",
+      "capabilities": [
+        {
+          "key": "fridge_temperature",
+          "label": "冷藏设定",
+          "kind": "write",
+          "min": 2,
+          "max": 8,
+          "step": 1,
+          "unit": "℃",
+          "value": 4
+        },
+        {
+          "key": "freezer_temperature",
+          "label": "冷冻设定",
+          "kind": "write",
+          "min": -24,
+          "max": -16,
+          "step": 1,
+          "unit": "℃",
+          "value": -18
+        }
+      ],
+      "indexInRoom": 2,
+      "controllable": true
+    },
+    {
+      "id": "MJ-064",
+      "name": "厨房油烟机",
+      "shortName": "油烟机",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "hood",
+      "type": "油烟机",
+      "icon": "▰",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "speed",
+          "label": "风档",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "medium",
+          "values": {
+            "low": "低",
+            "medium": "中",
+            "high": "高"
+          }
+        }
+      ],
+      "indexInRoom": 3,
+      "controllable": true
+    },
+    {
+      "id": "MJ-065",
+      "name": "厨房洗碗机",
+      "shortName": "洗碗机",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "dishwasher",
+      "type": "洗碗机",
+      "icon": "▣",
+      "capabilities": [
+        {
+          "key": "task",
+          "label": "任务",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "start": "启动",
+            "pause": "暂停",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "program",
+          "label": "程序",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "eco",
+          "values": {
+            "eco": "节能",
+            "normal": "标准",
+            "intensive": "强力"
+          }
+        }
+      ],
+      "indexInRoom": 4,
+      "controllable": true
+    },
+    {
+      "id": "MJ-066",
+      "name": "厨房恒温水壶",
+      "shortName": "恒温水壶",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "kettle",
+      "type": "恒温水壶",
+      "icon": "♨",
+      "capabilities": [
+        {
+          "key": "task",
+          "label": "任务",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "boil": "烧水",
+            "warm": "保温",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "target_temperature",
+          "label": "保温温度",
+          "kind": "write",
+          "min": 40,
+          "max": 90,
+          "step": 1,
+          "unit": "℃",
+          "value": 55
+        }
+      ],
+      "indexInRoom": 5,
+      "controllable": true
+    },
+    {
+      "id": "MJ-067",
+      "name": "厨房净水器",
+      "shortName": "净水器",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "water",
+      "type": "净水器",
+      "icon": "◇",
+      "capabilities": [
+        {
+          "key": "tds",
+          "label": "出水 TDS",
+          "kind": "read",
+          "min": 0,
+          "max": 1000,
+          "step": 1,
+          "unit": "ppm",
+          "value": 18
+        },
+        {
+          "key": "filter",
+          "label": "滤芯剩余",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 82
+        }
+      ],
+      "indexInRoom": 6,
+      "controllable": false
+    },
+    {
+      "id": "MJ-068",
+      "name": "厨房燃气报警器",
+      "shortName": "燃气报警器",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "gas",
+      "type": "燃气传感器",
+      "icon": "△",
+      "capabilities": [
+        {
+          "key": "alarm",
+          "label": "燃气报警",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "正常",
+            "1": "报警"
+          }
+        }
+      ],
+      "indexInRoom": 7,
+      "controllable": false
+    },
+    {
+      "id": "MJ-069",
+      "name": "厨房水槽水浸传感器",
+      "shortName": "水槽水浸传感器",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "leak",
+      "type": "水浸传感器",
+      "icon": "≈",
+      "capabilities": [
+        {
+          "key": "alarm",
+          "label": "漏水报警",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "干燥",
+            "1": "漏水"
+          }
+        }
+      ],
+      "indexInRoom": 8,
+      "controllable": false
+    },
+    {
+      "id": "MJ-070",
+      "name": "厨房温湿度计",
+      "shortName": "温湿度计",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "temp",
+      "type": "温湿度传感器",
+      "icon": "◌",
+      "capabilities": [
+        {
+          "key": "temperature",
+          "label": "温度",
+          "kind": "read",
+          "min": -20,
+          "max": 60,
+          "step": 0.1,
+          "unit": "℃",
+          "value": 24.6
+        },
+        {
+          "key": "humidity",
+          "label": "湿度",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 48
+        }
+      ],
+      "indexInRoom": 9,
+      "controllable": false
+    },
+    {
+      "id": "MJ-071",
+      "name": "厨房料理台插座",
+      "shortName": "料理台插座",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "▤",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "power_w",
+          "label": "功率",
+          "kind": "read",
+          "min": 0,
+          "max": 2500,
+          "step": 1,
+          "unit": "W",
+          "value": 32
+        }
+      ],
+      "indexInRoom": 10,
+      "controllable": true
+    },
+    {
+      "id": "MJ-072",
+      "name": "厨房墙壁开关",
+      "shortName": "墙壁开关",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "switch",
+      "type": "墙壁开关",
+      "icon": "▣",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        }
+      ],
+      "indexInRoom": 11,
+      "controllable": true
+    },
+    {
+      "id": "MJ-073",
+      "name": "主卫吸顶灯",
+      "shortName": "吸顶灯",
+      "room": "主卫",
+      "roomId": "bath1",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 0,
+      "controllable": true
+    },
+    {
+      "id": "MJ-074",
+      "name": "主卫镜前灯",
+      "shortName": "镜前灯",
+      "room": "主卫",
+      "roomId": "bath1",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 1,
+      "controllable": true
+    },
+    {
+      "id": "MJ-075",
+      "name": "主卫浴霸",
+      "shortName": "浴霸",
+      "room": "主卫",
+      "roomId": "bath1",
+      "profile": "bath",
+      "type": "浴霸",
+      "icon": "☀",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "mode",
+          "label": "模式",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "vent",
+          "values": {
+            "vent": "换气",
+            "warm": "暖风",
+            "dry": "干燥"
+          }
+        },
+        {
+          "key": "target_temperature",
+          "label": "暖风目标",
+          "kind": "write",
+          "min": 20,
+          "max": 35,
+          "step": 1,
+          "unit": "℃",
+          "value": 26
+        }
+      ],
+      "indexInRoom": 2,
+      "controllable": true
+    },
+    {
+      "id": "MJ-076",
+      "name": "主卫智能马桶",
+      "shortName": "智能马桶",
+      "room": "主卫",
+      "roomId": "bath1",
+      "profile": "toilet",
+      "type": "智能马桶",
+      "icon": "◡",
+      "capabilities": [
+        {
+          "key": "seat_temperature",
+          "label": "座温档位",
+          "kind": "write",
+          "min": 0,
+          "max": 3,
+          "step": 1,
+          "unit": "档",
+          "value": 1
+        },
+        {
+          "key": "water_temperature",
+          "label": "水温档位",
+          "kind": "write",
+          "min": 0,
+          "max": 3,
+          "step": 1,
+          "unit": "档",
+          "value": 2
+        },
+        {
+          "key": "flush",
+          "label": "冲水",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "idle",
+          "values": {
+            "idle": "待机",
+            "flush": "冲水"
+          }
+        }
+      ],
+      "indexInRoom": 3,
+      "controllable": true
+    },
+    {
+      "id": "MJ-077",
+      "name": "主卫热水器",
+      "shortName": "热水器",
+      "room": "主卫",
+      "roomId": "bath1",
+      "profile": "heater",
+      "type": "热水器",
+      "icon": "♨",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "target_temperature",
+          "label": "水温设定",
+          "kind": "write",
+          "min": 35,
+          "max": 75,
+          "step": 1,
+          "unit": "℃",
+          "value": 50
+        }
+      ],
+      "indexInRoom": 4,
+      "controllable": true
+    },
+    {
+      "id": "MJ-078",
+      "name": "主卫温湿度计",
+      "shortName": "温湿度计",
+      "room": "主卫",
+      "roomId": "bath1",
+      "profile": "temp",
+      "type": "温湿度传感器",
+      "icon": "◌",
+      "capabilities": [
+        {
+          "key": "temperature",
+          "label": "温度",
+          "kind": "read",
+          "min": -20,
+          "max": 60,
+          "step": 0.1,
+          "unit": "℃",
+          "value": 24.6
+        },
+        {
+          "key": "humidity",
+          "label": "湿度",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 48
+        }
+      ],
+      "indexInRoom": 5,
+      "controllable": false
+    },
+    {
+      "id": "MJ-079",
+      "name": "主卫人体传感器",
+      "shortName": "人体传感器",
+      "room": "主卫",
+      "roomId": "bath1",
+      "profile": "motion",
+      "type": "人体传感器",
+      "icon": "◎",
+      "capabilities": [
+        {
+          "key": "presence",
+          "label": "有人状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "无人",
+            "1": "有人"
+          }
+        },
+        {
+          "key": "illuminance",
+          "label": "照度",
+          "kind": "read",
+          "min": 0,
+          "max": 10000,
+          "step": 1,
+          "unit": "lx",
+          "value": 120
+        }
+      ],
+      "indexInRoom": 6,
+      "controllable": false
+    },
+    {
+      "id": "MJ-080",
+      "name": "主卫水浸传感器",
+      "shortName": "水浸传感器",
+      "room": "主卫",
+      "roomId": "bath1",
+      "profile": "leak",
+      "type": "水浸传感器",
+      "icon": "≈",
+      "capabilities": [
+        {
+          "key": "alarm",
+          "label": "漏水报警",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "干燥",
+            "1": "漏水"
+          }
+        }
+      ],
+      "indexInRoom": 7,
+      "controllable": false
+    },
+    {
+      "id": "MJ-081",
+      "name": "客卫吸顶灯",
+      "shortName": "吸顶灯",
+      "room": "客卫",
+      "roomId": "bath2",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 0,
+      "controllable": true
+    },
+    {
+      "id": "MJ-082",
+      "name": "客卫镜前灯",
+      "shortName": "镜前灯",
+      "room": "客卫",
+      "roomId": "bath2",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 1,
+      "controllable": true
+    },
+    {
+      "id": "MJ-083",
+      "name": "客卫浴霸",
+      "shortName": "浴霸",
+      "room": "客卫",
+      "roomId": "bath2",
+      "profile": "bath",
+      "type": "浴霸",
+      "icon": "☀",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "mode",
+          "label": "模式",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "vent",
+          "values": {
+            "vent": "换气",
+            "warm": "暖风",
+            "dry": "干燥"
+          }
+        },
+        {
+          "key": "target_temperature",
+          "label": "暖风目标",
+          "kind": "write",
+          "min": 20,
+          "max": 35,
+          "step": 1,
+          "unit": "℃",
+          "value": 26
+        }
+      ],
+      "indexInRoom": 2,
+      "controllable": true
+    },
+    {
+      "id": "MJ-084",
+      "name": "客卫排气扇",
+      "shortName": "排气扇",
+      "room": "客卫",
+      "roomId": "bath2",
+      "profile": "exhaust",
+      "type": "排气扇",
+      "icon": "✣",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "speed",
+          "label": "档位",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "low",
+          "values": {
+            "low": "低",
+            "high": "高"
+          }
+        }
+      ],
+      "indexInRoom": 3,
+      "controllable": true
+    },
+    {
+      "id": "MJ-085",
+      "name": "客卫智能马桶",
+      "shortName": "智能马桶",
+      "room": "客卫",
+      "roomId": "bath2",
+      "profile": "toilet",
+      "type": "智能马桶",
+      "icon": "◡",
+      "capabilities": [
+        {
+          "key": "seat_temperature",
+          "label": "座温档位",
+          "kind": "write",
+          "min": 0,
+          "max": 3,
+          "step": 1,
+          "unit": "档",
+          "value": 1
+        },
+        {
+          "key": "water_temperature",
+          "label": "水温档位",
+          "kind": "write",
+          "min": 0,
+          "max": 3,
+          "step": 1,
+          "unit": "档",
+          "value": 2
+        },
+        {
+          "key": "flush",
+          "label": "冲水",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "idle",
+          "values": {
+            "idle": "待机",
+            "flush": "冲水"
+          }
+        }
+      ],
+      "indexInRoom": 4,
+      "controllable": true
+    },
+    {
+      "id": "MJ-086",
+      "name": "客卫温湿度计",
+      "shortName": "温湿度计",
+      "room": "客卫",
+      "roomId": "bath2",
+      "profile": "temp",
+      "type": "温湿度传感器",
+      "icon": "◌",
+      "capabilities": [
+        {
+          "key": "temperature",
+          "label": "温度",
+          "kind": "read",
+          "min": -20,
+          "max": 60,
+          "step": 0.1,
+          "unit": "℃",
+          "value": 24.6
+        },
+        {
+          "key": "humidity",
+          "label": "湿度",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 48
+        }
+      ],
+      "indexInRoom": 5,
+      "controllable": false
+    },
+    {
+      "id": "MJ-087",
+      "name": "客卫人体传感器",
+      "shortName": "人体传感器",
+      "room": "客卫",
+      "roomId": "bath2",
+      "profile": "motion",
+      "type": "人体传感器",
+      "icon": "◎",
+      "capabilities": [
+        {
+          "key": "presence",
+          "label": "有人状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "无人",
+            "1": "有人"
+          }
+        },
+        {
+          "key": "illuminance",
+          "label": "照度",
+          "kind": "read",
+          "min": 0,
+          "max": 10000,
+          "step": 1,
+          "unit": "lx",
+          "value": 120
+        }
+      ],
+      "indexInRoom": 6,
+      "controllable": false
+    },
+    {
+      "id": "MJ-088",
+      "name": "客卫水浸传感器",
+      "shortName": "水浸传感器",
+      "room": "客卫",
+      "roomId": "bath2",
+      "profile": "leak",
+      "type": "水浸传感器",
+      "icon": "≈",
+      "capabilities": [
+        {
+          "key": "alarm",
+          "label": "漏水报警",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "干燥",
+            "1": "漏水"
+          }
+        }
+      ],
+      "indexInRoom": 7,
+      "controllable": false
+    },
+    {
+      "id": "MJ-089",
+      "name": "阳台吸顶灯",
+      "shortName": "吸顶灯",
+      "room": "阳台",
+      "roomId": "balcony",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 0,
+      "controllable": true
+    },
+    {
+      "id": "MJ-090",
+      "name": "阳台洗衣机",
+      "shortName": "洗衣机",
+      "room": "阳台",
+      "roomId": "balcony",
+      "profile": "washer",
+      "type": "洗衣机",
+      "icon": "▣",
+      "capabilities": [
+        {
+          "key": "task",
+          "label": "任务",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "start": "启动",
+            "pause": "暂停",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "program",
+          "label": "程序",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "cotton",
+          "values": {
+            "cotton": "棉织物",
+            "quick": "快洗",
+            "delicate": "轻柔"
+          }
+        },
+        {
+          "key": "water_temperature",
+          "label": "水温",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "30",
+          "values": {
+            "30": "30℃",
+            "40": "40℃",
+            "60": "60℃",
+            "cold": "常温"
+          }
+        }
+      ],
+      "indexInRoom": 1,
+      "controllable": true
+    },
+    {
+      "id": "MJ-091",
+      "name": "阳台烘干机",
+      "shortName": "烘干机",
+      "room": "阳台",
+      "roomId": "balcony",
+      "profile": "dryer",
+      "type": "烘干机",
+      "icon": "▣",
+      "capabilities": [
+        {
+          "key": "task",
+          "label": "任务",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "start": "启动",
+            "pause": "暂停",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "level",
+          "label": "干燥程度",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "normal",
+          "values": {
+            "iron": "熨烫干",
+            "normal": "标准",
+            "extra": "强干"
+          }
+        }
+      ],
+      "indexInRoom": 2,
+      "controllable": true
+    },
+    {
+      "id": "MJ-092",
+      "name": "阳台晾衣架",
+      "shortName": "晾衣架",
+      "room": "阳台",
+      "roomId": "balcony",
+      "profile": "rack",
+      "type": "晾衣架",
+      "icon": "⊓",
+      "capabilities": [
+        {
+          "key": "motion",
+          "label": "升降",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "stop",
+          "values": {
+            "up": "上升",
+            "down": "下降",
+            "stop": "停止"
+          }
+        },
+        {
+          "key": "light",
+          "label": "照明",
+          "kind": "write",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        }
+      ],
+      "indexInRoom": 3,
+      "controllable": true
+    },
+    {
+      "id": "MJ-093",
+      "name": "阳台温湿度计",
+      "shortName": "温湿度计",
+      "room": "阳台",
+      "roomId": "balcony",
+      "profile": "temp",
+      "type": "温湿度传感器",
+      "icon": "◌",
+      "capabilities": [
+        {
+          "key": "temperature",
+          "label": "温度",
+          "kind": "read",
+          "min": -20,
+          "max": 60,
+          "step": 0.1,
+          "unit": "℃",
+          "value": 24.6
+        },
+        {
+          "key": "humidity",
+          "label": "湿度",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 48
+        }
+      ],
+      "indexInRoom": 4,
+      "controllable": false
+    },
+    {
+      "id": "MJ-094",
+      "name": "阳台水浸传感器",
+      "shortName": "水浸传感器",
+      "room": "阳台",
+      "roomId": "balcony",
+      "profile": "leak",
+      "type": "水浸传感器",
+      "icon": "≈",
+      "capabilities": [
+        {
+          "key": "alarm",
+          "label": "漏水报警",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "干燥",
+            "1": "漏水"
+          }
+        }
+      ],
+      "indexInRoom": 5,
+      "controllable": false
+    },
+    {
+      "id": "MJ-095",
+      "name": "阳台备用插座",
+      "shortName": "备用插座",
+      "room": "阳台",
+      "roomId": "balcony",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "▤",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 1,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "power_w",
+          "label": "功率",
+          "kind": "read",
+          "min": 0,
+          "max": 2500,
+          "step": 1,
+          "unit": "W",
+          "value": 32
+        }
+      ],
+      "indexInRoom": 6,
+      "controllable": true
+    },
+    {
+      "id": "MJ-096",
+      "name": "玄关入户门锁",
+      "shortName": "入户门锁",
+      "room": "玄关",
+      "roomId": "entry",
+      "profile": "lock",
+      "type": "智能门锁",
+      "icon": "▣",
+      "capabilities": [
+        {
+          "key": "locked",
+          "label": "锁定状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "1",
+          "values": {
+            "0": "未锁",
+            "1": "已锁"
+          }
+        },
+        {
+          "key": "battery",
+          "label": "电量",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 85
+        }
+      ],
+      "indexInRoom": 0,
+      "controllable": false
+    },
+    {
+      "id": "MJ-097",
+      "name": "玄关吸顶灯",
+      "shortName": "吸顶灯",
+      "room": "玄关",
+      "roomId": "entry",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "unit": "",
+          "value": 0,
+          "values": {
+            "0": "关闭",
+            "1": "开启"
+          }
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 65
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ],
+      "indexInRoom": 1,
+      "controllable": true
+    },
+    {
+      "id": "MJ-098",
+      "name": "玄关入户门磁",
+      "shortName": "入户门磁",
+      "room": "玄关",
+      "roomId": "entry",
+      "profile": "contact",
+      "type": "门窗传感器",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "contact",
+          "label": "开合状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "关闭",
+            "1": "打开"
+          }
+        },
+        {
+          "key": "battery",
+          "label": "电量",
+          "kind": "read",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 92
+        }
+      ],
+      "indexInRoom": 2,
+      "controllable": false
+    },
+    {
+      "id": "MJ-099",
+      "name": "玄关人体传感器",
+      "shortName": "人体传感器",
+      "room": "玄关",
+      "roomId": "entry",
+      "profile": "motion",
+      "type": "人体传感器",
+      "icon": "◎",
+      "capabilities": [
+        {
+          "key": "presence",
+          "label": "有人状态",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "无人",
+            "1": "有人"
+          }
+        },
+        {
+          "key": "illuminance",
+          "label": "照度",
+          "kind": "read",
+          "min": 0,
+          "max": 10000,
+          "step": 1,
+          "unit": "lx",
+          "value": 120
+        }
+      ],
+      "indexInRoom": 3,
+      "controllable": false
+    },
+    {
+      "id": "MJ-100",
+      "name": "玄关烟雾报警器",
+      "shortName": "烟雾报警器",
+      "room": "玄关",
+      "roomId": "entry",
+      "profile": "smoke",
+      "type": "烟雾传感器",
+      "icon": "△",
+      "capabilities": [
+        {
+          "key": "alarm",
+          "label": "烟雾报警",
+          "kind": "read",
+          "min": null,
+          "max": null,
+          "step": null,
+          "unit": "",
+          "value": "0",
+          "values": {
+            "0": "正常",
+            "1": "报警"
+          }
+        }
+      ],
+      "indexInRoom": 4,
+      "controllable": false
+    }
+  ]
+}
