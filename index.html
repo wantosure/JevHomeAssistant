@@ -125,7 +125,6 @@ $('quickFeedback').addEventListener('click',e=>{const b=e.target.closest('[data-
 $('rows').addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(b){detail(b.dataset.id);$('detail').scrollIntoView({behavior:'smooth',block:'nearest'});}});
 document.querySelectorAll('th[data-key] button').forEach(b=>b.addEventListener('click',()=>{const key=b.parentElement.dataset.key,dir=$('sort').value===key+'-asc'?'desc':'asc';if(![...$('sort').options].some(o=>o.value===key+'-'+dir))$('sort').add(new Option(({id:'ID',name:'名称',room:'房间',type:'类型'}[key])+' · 降序',key+'-'+dir));$('sort').value=key+'-'+dir;renderTable();}));
 $('export').addEventListener('click',()=>{const payload={schemaVersion:1,simulated:true,description:'三室一厅两卫模拟设备；非官方米家规格，不执行真实控制',rooms:rooms.map(({id,name,area})=>({id,name,area})),devices};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mijia-100-devices.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
-renderPlan();detail(selected);renderTable();
 const intentLabels={home_query:'智能家居查询',home_control:'智能家居控制',ai_question:'豆包 AI 问答',scheduled_control:'定时控制',music:'播放音乐',unclear:'无法确定'};
 const safeText=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function addLog(msg,level='info'){const el=document.createElement('div');el.className='log-line '+level;el.textContent=new Date().toLocaleTimeString()+' · '+msg;$('eventLog').prepend(el);}
@@ -153,6 +152,8 @@ function renderReplay(){const history=JSON.parse(localStorage.getItem('jevReplay
 $('replayHistory').addEventListener('click',e=>{const b=e.target.closest('[data-replay]');if(b){const history=JSON.parse(localStorage.getItem('jevReplayHistory')||'[]');$('commandInput').value=history[Number(b.dataset.replay)]||'';$('commandInput').focus();}});
 document.querySelectorAll('[data-sample]').forEach(b=>b.addEventListener('click',()=>{$('commandInput').value=b.dataset.sample;$('commandInput').focus();}));
 $('resetSim').addEventListener('click',async()=>{if(!confirm('重置全部100个设备的模拟状态？'))return;const r=await fetch('/api/reset',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});if(r.ok){localStorage.removeItem('jevDeviceStates');await loadServerState();addLog('模拟家庭状态已恢复初始值。','success');}else addLog('重置失败：HTTP '+r.status,'error');});
+// Bootstrap only after all helpers and event handlers have been initialized.
+renderPlan();detail(selected);renderTable();
 renderReplay();loadServerState();loadCosts();
 </script>
 </body></html>
