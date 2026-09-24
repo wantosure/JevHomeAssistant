@@ -9,3 +9,4 @@ __pycache__/
 .npm-cache/
 cloudflared.exe
 dist/
+node_modules/
