@@ -1,0 +1,2503 @@
+{
+  "schemaVersion": 1,
+  "simulated": true,
+  "rooms": [
+    {
+      "id": "base",
+      "name": "基地",
+      "area": 25
+    },
+    {
+      "id": "living",
+      "name": "客厅",
+      "area": 35
+    },
+    {
+      "id": "kitchen",
+      "name": "厨房",
+      "area": 12
+    },
+    {
+      "id": "guest",
+      "name": "次卧",
+      "area": 16
+    },
+    {
+      "id": "master",
+      "name": "主卧",
+      "area": 20
+    },
+    {
+      "id": "entry",
+      "name": "门厅",
+      "area": 8
+    },
+    {
+      "id": "tools",
+      "name": "小工具",
+      "area": 6
+    },
+    {
+      "id": "backend",
+      "name": "后台",
+      "area": 10
+    },
+    {
+      "id": "untested",
+      "name": "未测",
+      "area": 15
+    }
+  ],
+  "devices": [
+    {
+      "id": "MJ-001",
+      "name": "白色电风扇",
+      "shortName": "白色电风扇",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "fan",
+      "type": "风扇",
+      "icon": "❋",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "fan_speed",
+          "label": "风速档位",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "unit": "档",
+          "value": 2
+        },
+        {
+          "key": "oscillation",
+          "label": "摇头摆风",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-002",
+      "name": "Yeelight 智能浴霸 S20",
+      "shortName": "Yeelight 浴霸 S20",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "bath_heater",
+      "type": "浴霸",
+      "icon": "♨",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "mode",
+          "label": "功能模式",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "warm_air": "暖风",
+            "ventilation": "换气",
+            "dry": "干燥",
+            "blow": "吹风"
+          },
+          "value": "warm_air"
+        },
+        {
+          "key": "light",
+          "label": "照明",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "MJ-003",
+      "name": "小米智能多模网关2",
+      "shortName": "多模网关2",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "gateway",
+      "type": "网关",
+      "icon": "☵",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-004",
+      "name": "小米小爱音箱Play 增强版",
+      "shortName": "小爱音箱Play 增强版",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "speaker",
+      "type": "音箱",
+      "icon": "♫",
+      "capabilities": [
+        {
+          "key": "playback",
+          "label": "播放状态",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "play": "播放",
+            "pause": "暂停"
+          },
+          "value": "pause"
+        },
+        {
+          "key": "volume",
+          "label": "音量大小",
+          "kind": "write",
+          "type": "number",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "id": "MJ-005",
+      "name": "热水",
+      "shortName": "热水",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "⚡",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-006",
+      "name": "米家智能晾衣机",
+      "shortName": "晾衣机",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "clothes_dryer",
+      "type": "晾衣架",
+      "icon": "☲",
+      "capabilities": [
+        {
+          "key": "motion",
+          "label": "升降控制",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "up": "上升",
+            "down": "下降",
+            "stop": "暂停"
+          },
+          "value": "stop"
+        },
+        {
+          "key": "light",
+          "label": "照明",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "MJ-007",
+      "name": "米家新风空调（尊享版）",
+      "shortName": "新风空调（尊享版）",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "ac",
+      "type": "空调",
+      "icon": "❄",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        },
+        {
+          "key": "target_temperature",
+          "label": "目标温度",
+          "kind": "write",
+          "type": "number",
+          "min": 16.0,
+          "max": 32.0,
+          "step": 0.5,
+          "unit": "°C",
+          "value": 26.0
+        },
+        {
+          "key": "mode",
+          "label": "工作模式",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "cool": "制冷",
+            "heat": "制热",
+            "fan": "送风",
+            "auto": "自动",
+            "dry": "除湿"
+          },
+          "value": "cool"
+        },
+        {
+          "key": "fresh_air",
+          "label": "新风",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-008",
+      "name": "米家新风空调立式（3匹）",
+      "shortName": "新风空调立式（3匹）",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "ac",
+      "type": "空调",
+      "icon": "❄",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        },
+        {
+          "key": "target_temperature",
+          "label": "目标温度",
+          "kind": "write",
+          "type": "number",
+          "min": 16.0,
+          "max": 32.0,
+          "step": 0.5,
+          "unit": "°C",
+          "value": 26.0
+        },
+        {
+          "key": "mode",
+          "label": "工作模式",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "cool": "制冷",
+            "heat": "制热",
+            "fan": "送风",
+            "auto": "自动",
+            "dry": "除湿"
+          },
+          "value": "cool"
+        },
+        {
+          "key": "fresh_air",
+          "label": "新风",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-009",
+      "name": "米家新风空调（尊享版）-次卧",
+      "shortName": "新风空调（尊享版）-次卧",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "ac",
+      "type": "空调",
+      "icon": "❄",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        },
+        {
+          "key": "target_temperature",
+          "label": "目标温度",
+          "kind": "write",
+          "type": "number",
+          "min": 16.0,
+          "max": 32.0,
+          "step": 0.5,
+          "unit": "°C",
+          "value": 26.0
+        },
+        {
+          "key": "mode",
+          "label": "工作模式",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "cool": "制冷",
+            "heat": "制热",
+            "fan": "送风",
+            "auto": "自动",
+            "dry": "除湿"
+          },
+          "value": "cool"
+        },
+        {
+          "key": "fresh_air",
+          "label": "新风",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-010",
+      "name": "小米智能中控屏",
+      "shortName": "中控屏",
+      "room": "门厅",
+      "roomId": "entry",
+      "profile": "panel",
+      "type": "控制面板",
+      "icon": "🔲",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-011",
+      "name": "米家智能窗帘2",
+      "shortName": "窗帘2",
+      "room": "基地",
+      "roomId": "base",
+      "profile": "curtain",
+      "type": "窗帘",
+      "icon": "▥",
+      "capabilities": [
+        {
+          "key": "position",
+          "label": "开合比例",
+          "kind": "write",
+          "type": "number",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 100
+        },
+        {
+          "key": "motion",
+          "label": "窗帘动作",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "open": "打开",
+            "close": "关闭",
+            "stop": "暂停"
+          },
+          "value": "stop"
+        }
+      ]
+    },
+    {
+      "id": "MJ-012",
+      "name": "米家无线洗地机4 Max",
+      "shortName": "无线洗地机4 Max",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "vacuum",
+      "type": "洗地机",
+      "icon": "🧹",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "工作状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "task",
+          "label": "执行任务",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "clean": "清扫",
+            "pause": "暂停",
+            "dock": "回充"
+          },
+          "value": "dock"
+        }
+      ]
+    },
+    {
+      "id": "MJ-013",
+      "name": "Xiaomi 智能音箱",
+      "shortName": "Xiaomi 音箱",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "speaker",
+      "type": "音箱",
+      "icon": "♫",
+      "capabilities": [
+        {
+          "key": "playback",
+          "label": "播放状态",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "play": "播放",
+            "pause": "暂停"
+          },
+          "value": "pause"
+        },
+        {
+          "key": "volume",
+          "label": "音量大小",
+          "kind": "write",
+          "type": "number",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "id": "MJ-014",
+      "name": "米家无线吸尘器3 显微版",
+      "shortName": "无线吸尘器3 显微版",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "vacuum",
+      "type": "吸尘器",
+      "icon": "🧹",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "工作状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "task",
+          "label": "执行任务",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "clean": "清扫",
+            "pause": "暂停",
+            "dock": "回充"
+          },
+          "value": "dock"
+        }
+      ]
+    },
+    {
+      "id": "MJ-015",
+      "name": "米家吸顶灯Pro 超薄版",
+      "shortName": "吸顶灯Pro 超薄版",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-016",
+      "name": "米家吸顶灯",
+      "shortName": "吸顶灯",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-017",
+      "name": "Xiaomi Sound 2 Max",
+      "shortName": "Xiaomi Sound 2 Max",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "speaker",
+      "type": "音箱",
+      "icon": "♫",
+      "capabilities": [
+        {
+          "key": "playback",
+          "label": "播放状态",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "play": "播放",
+            "pause": "暂停"
+          },
+          "value": "pause"
+        },
+        {
+          "key": "volume",
+          "label": "音量大小",
+          "kind": "write",
+          "type": "number",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "id": "MJ-018",
+      "name": "小米智能开关Pro（三开）",
+      "shortName": "开关Pro",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-019",
+      "name": "小米智能开关Pro（双开）-次卧",
+      "shortName": "开关Pro-次卧",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-020",
+      "name": "小米智能开关Pro（双开）-客厅",
+      "shortName": "开关Pro-客厅",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-021",
+      "name": "厕所灯控",
+      "shortName": "厕所灯控",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-022",
+      "name": "落地插座",
+      "shortName": "落地插座",
+      "room": "未测",
+      "roomId": "untested",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "⚡",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-023",
+      "name": "PTX 智能六键开关",
+      "shortName": "PTX 六键开关",
+      "room": "未测",
+      "roomId": "untested",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-024",
+      "name": "子擎存在传感器 Lite",
+      "shortName": "子擎存在传感器 Lite",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "sensor",
+      "type": "存在传感器",
+      "icon": "👁",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-025",
+      "name": "视频",
+      "shortName": "视频",
+      "room": "门厅",
+      "roomId": "entry",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-026",
+      "name": "屏快",
+      "shortName": "屏快",
+      "room": "门厅",
+      "roomId": "entry",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-027",
+      "name": "小米智能中控屏 Max 2",
+      "shortName": "中控屏 Max 2",
+      "room": "后台",
+      "roomId": "backend",
+      "profile": "panel",
+      "type": "控制面板",
+      "icon": "🔲",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-028",
+      "name": "领普人体存在传感器 S1",
+      "shortName": "领普人体存在传感器 S1",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "sensor",
+      "type": "存在传感器",
+      "icon": "👁",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-029",
+      "name": "小米智能摄像机 4C 300万",
+      "shortName": "摄像机 4C 300万",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "camera",
+      "type": "摄像机",
+      "icon": "📷",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "摄像机开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-030",
+      "name": "WantS_2.4G",
+      "shortName": "WantS_2.4G",
+      "room": "后台",
+      "roomId": "backend",
+      "profile": "router",
+      "type": "路由器",
+      "icon": "📶",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-031",
+      "name": "小米智能门锁 5 Max",
+      "shortName": "门锁 5 Max",
+      "room": "门厅",
+      "roomId": "entry",
+      "profile": "lock",
+      "type": "门锁",
+      "icon": "🔒",
+      "capabilities": [
+        {
+          "key": "locked",
+          "label": "锁舌状态",
+          "kind": "read",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-032",
+      "name": "小米智能摄像机 5 Pro",
+      "shortName": "摄像机 5 Pro",
+      "room": "门厅",
+      "roomId": "entry",
+      "profile": "camera",
+      "type": "摄像机",
+      "icon": "📷",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "摄像机开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-033",
+      "name": "小米智能开关（双开）",
+      "shortName": "开关",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-034",
+      "name": "米家空气净化器 5S 内循环",
+      "shortName": "空气净化器 5S 内循环",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "purifier",
+      "type": "空气净化器",
+      "icon": "༄",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        },
+        {
+          "key": "mode",
+          "label": "净化模式",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "auto": "自动",
+            "sleep": "睡眠",
+            "favorite": "最爱"
+          },
+          "value": "auto"
+        }
+      ]
+    },
+    {
+      "id": "MJ-035",
+      "name": "叮零智能宠物喂食器",
+      "shortName": "叮零宠物喂食器",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "pet_feeder",
+      "type": "宠物喂食器",
+      "icon": "🥣",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-036",
+      "name": "米家显示器挂灯2",
+      "shortName": "显示器挂灯2",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-037",
+      "name": "小米智能开关2（双开）",
+      "shortName": "开关2",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-038",
+      "name": "米家净化加湿器3 Pro",
+      "shortName": "净化加湿器3 Pro",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "humidifier",
+      "type": "加湿器",
+      "icon": "💧",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "target_humidity",
+          "label": "目标湿度",
+          "kind": "write",
+          "type": "number",
+          "min": 30,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "mode",
+          "label": "工作档位",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "auto": "自动",
+            "sleep": "睡眠",
+            "strong": "强力"
+          },
+          "value": "auto"
+        }
+      ]
+    },
+    {
+      "id": "MJ-039",
+      "name": "米家筒灯3 Pro-2",
+      "shortName": "筒灯3 Pro-2",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-040",
+      "name": "米家筒灯3 Pro-4",
+      "shortName": "筒灯3 Pro-4",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-041",
+      "name": "小米充电宝 Pro 25000",
+      "shortName": "充电宝 Pro 25000",
+      "room": "小工具",
+      "roomId": "tools",
+      "profile": "socket",
+      "type": "插座",
+      "icon": "⚡",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-042",
+      "name": "米家筒灯3 Pro 人在亮",
+      "shortName": "筒灯3 Pro 人在亮",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-043",
+      "name": "米家射灯3 Pro-3",
+      "shortName": "射灯3 Pro-3",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-044",
+      "name": "人体传感器2",
+      "shortName": "人体传感器2",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "sensor",
+      "type": "传感器",
+      "icon": "👁",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-045",
+      "name": "小米电子温湿度计",
+      "shortName": "电子温湿度计",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "sensor",
+      "type": "传感器",
+      "icon": "🌡",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-046",
+      "name": "温湿度传感器2",
+      "shortName": "温湿度传感器2",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "sensor",
+      "type": "传感器",
+      "icon": "🌡",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-047",
+      "name": "领普压力有感传感器",
+      "shortName": "领普压力有感传感器",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "sensor",
+      "type": "压力传感器",
+      "icon": "⚖",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-048",
+      "name": "宝宝温控",
+      "shortName": "宝宝温控",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "sensor",
+      "type": "传感器",
+      "icon": "🌡",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-049",
+      "name": "宝宝温湿度",
+      "shortName": "宝宝温湿度",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "sensor",
+      "type": "传感器",
+      "icon": "🌡",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-050",
+      "name": "次卧灯开关",
+      "shortName": "次卧灯开关",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-051",
+      "name": "B",
+      "shortName": "B",
+      "room": "门厅",
+      "roomId": "entry",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-052",
+      "name": "小米智能无线开关（双键版）",
+      "shortName": "无线开关（双键版）",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-053",
+      "name": "米家八电极体脂秤 S800",
+      "shortName": "八电极体脂秤 S800",
+      "room": "小工具",
+      "roomId": "tools",
+      "profile": "scale",
+      "type": "体脂秤",
+      "icon": "⚖",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-054",
+      "name": "小米智能卫士2",
+      "shortName": "卫士2",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "sensor",
+      "type": "传感器",
+      "icon": "🚨",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-055",
+      "name": "床灯",
+      "shortName": "床灯",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-056",
+      "name": "灯组",
+      "shortName": "灯组",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-057",
+      "name": "米家筒灯3pro",
+      "shortName": "筒灯3pro",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-058",
+      "name": "无线开关",
+      "shortName": "无线开关",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-059",
+      "name": "无线开关2",
+      "shortName": "无线开关2",
+      "room": "门厅",
+      "roomId": "entry",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-060",
+      "name": "电视开关",
+      "shortName": "电视开关",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "switch",
+      "type": "开关",
+      "icon": "◫",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-061",
+      "name": "自空灯",
+      "shortName": "自空灯",
+      "room": "后台",
+      "roomId": "backend",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-062",
+      "name": "雅克风扇2",
+      "shortName": "雅克风扇2",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "fan",
+      "type": "风扇",
+      "icon": "❋",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "fan_speed",
+          "label": "风速档位",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "unit": "档",
+          "value": 2
+        },
+        {
+          "key": "oscillation",
+          "label": "摇头摆风",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-063",
+      "name": "插排",
+      "shortName": "插排",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "socket",
+      "type": "插排",
+      "icon": "⚡",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-064",
+      "name": "小米AI音箱",
+      "shortName": "AI音箱",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "speaker",
+      "type": "音箱",
+      "icon": "♫",
+      "capabilities": [
+        {
+          "key": "playback",
+          "label": "播放状态",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "play": "播放",
+            "pause": "暂停"
+          },
+          "value": "pause"
+        },
+        {
+          "key": "volume",
+          "label": "音量大小",
+          "kind": "write",
+          "type": "number",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "id": "MJ-065",
+      "name": "窗帘",
+      "shortName": "窗帘",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "curtain",
+      "type": "窗帘",
+      "icon": "▥",
+      "capabilities": [
+        {
+          "key": "position",
+          "label": "开合比例",
+          "kind": "write",
+          "type": "number",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 100
+        },
+        {
+          "key": "motion",
+          "label": "窗帘动作",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "open": "打开",
+            "close": "关闭",
+            "stop": "暂停"
+          },
+          "value": "stop"
+        }
+      ]
+    },
+    {
+      "id": "MJ-066",
+      "name": "主卧吸顶灯",
+      "shortName": "主卧吸顶灯",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-067",
+      "name": "AI智能窗帘电机",
+      "shortName": "AI窗帘电机",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "curtain",
+      "type": "窗帘",
+      "icon": "▥",
+      "capabilities": [
+        {
+          "key": "position",
+          "label": "开合比例",
+          "kind": "write",
+          "type": "number",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 100
+        },
+        {
+          "key": "motion",
+          "label": "窗帘动作",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "open": "打开",
+            "close": "关闭",
+            "stop": "暂停"
+          },
+          "value": "stop"
+        }
+      ]
+    },
+    {
+      "id": "MJ-068",
+      "name": "米家微波炉",
+      "shortName": "微波炉",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "microwave",
+      "type": "微波炉",
+      "icon": "♨",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "启动",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "duration",
+          "label": "加热秒数",
+          "kind": "write",
+          "type": "number",
+          "min": 10,
+          "max": 600,
+          "step": 10,
+          "unit": "秒",
+          "value": 60
+        }
+      ]
+    },
+    {
+      "id": "MJ-069",
+      "name": "米家智能直流变频落地扇",
+      "shortName": "直流变频落地扇",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "fan",
+      "type": "风扇",
+      "icon": "❋",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "fan_speed",
+          "label": "风速档位",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "unit": "档",
+          "value": 2
+        },
+        {
+          "key": "oscillation",
+          "label": "摇头摆风",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-070",
+      "name": "小米智能猫眼2",
+      "shortName": "猫眼2",
+      "room": "门厅",
+      "roomId": "entry",
+      "profile": "camera",
+      "type": "可视门铃",
+      "icon": "📷",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "摄像机开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-071",
+      "name": "多模网关",
+      "shortName": "多模网关",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "gateway",
+      "type": "网关",
+      "icon": "☵",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-072",
+      "name": "小爱音箱触屏版",
+      "shortName": "小爱音箱触屏版",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "speaker",
+      "type": "音箱",
+      "icon": "♫",
+      "capabilities": [
+        {
+          "key": "playback",
+          "label": "播放状态",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "play": "播放",
+            "pause": "暂停"
+          },
+          "value": "pause"
+        },
+        {
+          "key": "volume",
+          "label": "音量大小",
+          "kind": "write",
+          "type": "number",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "id": "MJ-073",
+      "name": "米家智能加湿器 3",
+      "shortName": "加湿器 3",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "humidifier",
+      "type": "加湿器",
+      "icon": "💧",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "target_humidity",
+          "label": "目标湿度",
+          "kind": "write",
+          "type": "number",
+          "min": 30,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "mode",
+          "label": "工作档位",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "auto": "自动",
+            "sleep": "睡眠",
+            "strong": "强力"
+          },
+          "value": "auto"
+        }
+      ]
+    },
+    {
+      "id": "MJ-074",
+      "name": "绘睡水暖垫HS2205",
+      "shortName": "绘睡水暖垫HS2205",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "heater",
+      "type": "电热毯",
+      "icon": "♨",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "加热开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "target_temperature",
+          "label": "设定水温",
+          "kind": "write",
+          "type": "number",
+          "min": 25,
+          "max": 55,
+          "step": 1,
+          "unit": "°C",
+          "value": 38
+        }
+      ]
+    },
+    {
+      "id": "MJ-075",
+      "name": "黑色电风扇",
+      "shortName": "黑色电风扇",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "fan",
+      "type": "风扇",
+      "icon": "❋",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "fan_speed",
+          "label": "风速档位",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "unit": "档",
+          "value": 2
+        },
+        {
+          "key": "oscillation",
+          "label": "摇头摆风",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-076",
+      "name": "米家纯净式智能加湿器",
+      "shortName": "纯净式加湿器",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "humidifier",
+      "type": "加湿器",
+      "icon": "💧",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "target_humidity",
+          "label": "目标湿度",
+          "kind": "write",
+          "type": "number",
+          "min": 30,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "mode",
+          "label": "工作档位",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "auto": "自动",
+            "sleep": "睡眠",
+            "strong": "强力"
+          },
+          "value": "auto"
+        }
+      ]
+    },
+    {
+      "id": "MJ-077",
+      "name": "米家智能水暖毯",
+      "shortName": "水暖毯",
+      "room": "小工具",
+      "roomId": "tools",
+      "profile": "heater",
+      "type": "电热毯",
+      "icon": "♨",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "加热开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "target_temperature",
+          "label": "设定水温",
+          "kind": "write",
+          "type": "number",
+          "min": 25,
+          "max": 55,
+          "step": 1,
+          "unit": "°C",
+          "value": 38
+        }
+      ]
+    },
+    {
+      "id": "MJ-078",
+      "name": "米家无雾加湿器3 600",
+      "shortName": "无雾加湿器3 600",
+      "room": "主卧",
+      "roomId": "master",
+      "profile": "humidifier",
+      "type": "加湿器",
+      "icon": "💧",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "电源",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "target_humidity",
+          "label": "目标湿度",
+          "kind": "write",
+          "type": "number",
+          "min": 30,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "mode",
+          "label": "工作档位",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "auto": "自动",
+            "sleep": "睡眠",
+            "strong": "强力"
+          },
+          "value": "auto"
+        }
+      ]
+    },
+    {
+      "id": "MJ-079",
+      "name": "Xiaomi 无线音频送传器",
+      "shortName": "Xiaomi 无线音频送传器",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "audio",
+      "type": "影音配件",
+      "icon": "📻",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-080",
+      "name": "米家皮皮灯",
+      "shortName": "皮皮灯",
+      "room": "小工具",
+      "roomId": "tools",
+      "profile": "light",
+      "type": "灯具",
+      "icon": "◉",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "brightness",
+          "label": "亮度",
+          "kind": "write",
+          "type": "number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "value": 50
+        },
+        {
+          "key": "color_temperature",
+          "label": "色温",
+          "kind": "write",
+          "type": "number",
+          "min": 2700,
+          "max": 6500,
+          "step": 100,
+          "unit": "K",
+          "value": 4000
+        }
+      ]
+    },
+    {
+      "id": "MJ-081",
+      "name": "Xiaomi 中枢网关",
+      "shortName": "Xiaomi 中枢网关",
+      "room": "客厅",
+      "roomId": "living",
+      "profile": "gateway",
+      "type": "网关",
+      "icon": "☵",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-082",
+      "name": "Xiaomi Sound Move",
+      "shortName": "Xiaomi Sound Move",
+      "room": "小工具",
+      "roomId": "tools",
+      "profile": "speaker",
+      "type": "音箱",
+      "icon": "♫",
+      "capabilities": [
+        {
+          "key": "playback",
+          "label": "播放状态",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "play": "播放",
+            "pause": "暂停"
+          },
+          "value": "pause"
+        },
+        {
+          "key": "volume",
+          "label": "音量大小",
+          "kind": "write",
+          "type": "number",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "id": "MJ-083",
+      "name": "小米室外摄像机CW700",
+      "shortName": "室外摄像机CW700",
+      "room": "基地",
+      "roomId": "base",
+      "profile": "camera",
+      "type": "摄像机",
+      "icon": "📷",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "摄像机开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-084",
+      "name": "小米智能摄像机3 Pro",
+      "shortName": "摄像机3 Pro",
+      "room": "次卧",
+      "roomId": "guest",
+      "profile": "camera",
+      "type": "摄像机",
+      "icon": "📷",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "摄像机开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-085",
+      "name": "小米智能单眼2",
+      "shortName": "单眼2",
+      "room": "门厅",
+      "roomId": "entry",
+      "profile": "camera",
+      "type": "可视门铃",
+      "icon": "📷",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "摄像机开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-086",
+      "name": "小米智能门铃 4",
+      "shortName": "门铃 4",
+      "room": "门厅",
+      "roomId": "entry",
+      "profile": "camera",
+      "type": "可视门铃",
+      "icon": "📷",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "摄像机开关",
+          "kind": "write",
+          "type": "boolean",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MJ-087",
+      "name": "米家扫拖机器人 S Pro",
+      "shortName": "扫拖机器人 S Pro",
+      "room": "厨房",
+      "roomId": "kitchen",
+      "profile": "vacuum",
+      "type": "扫拖机器人",
+      "icon": "🧹",
+      "capabilities": [
+        {
+          "key": "power",
+          "label": "工作状态",
+          "kind": "write",
+          "type": "boolean",
+          "value": 0
+        },
+        {
+          "key": "task",
+          "label": "执行任务",
+          "kind": "write",
+          "type": "enum",
+          "values": {
+            "clean": "清扫",
+            "pause": "暂停",
+            "dock": "回充"
+          },
+          "value": "dock"
+        }
+      ]
+    }
+  ]
+}

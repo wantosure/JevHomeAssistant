@@ -1,12 +1,37 @@
+# 敏感密钥与配置（绝对不要提交）
 .key
+.env
+local.properties
+
+# 本地运行时与中间状态
 .device-state.json
 .device-state.tmp
-__pycache__/
-*.pyc
 .jev-costs.json
 .jev-costs.tmp
+__pycache__/
+*.pyc
 
+# 依赖与打包缓存
 .npm-cache/
-cloudflared.exe
 dist/
 node_modules/
+cloudflared.exe
+
+# Android 构建产物与 Gradle 缓存
+.gradle/
+build/
+**/build/
+.cxx/
+*.apk
+*.aab
+*.ap_
+
+# 临时打包与交付归档包
+assistant-development-handoff-v1.zip
+assistant-development-handoff-v1/
+
+# IDE 与系统文件
+.idea/
+*.iml
+.DS_Store
+*.log

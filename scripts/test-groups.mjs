@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import worker,{buildGroups,groupCandidates} from '../worker/index.js';
+import {createTestD1} from './test-d1.mjs';
+const DB=createTestD1();
 const data=JSON.parse(readFileSync(new URL('../mijia-100-devices.json',import.meta.url)));
 const live=process.argv.includes('--live');
 let key='mock';
@@ -23,7 +25,7 @@ if(!live)globalThis.fetch=async(url,options)=>{
  for(const q of Object.keys(questions).filter(q=>q.startsWith('set_')))answers[q]={choice:active.ops[q.slice(4)]||'no_change',confidence:1};
  return Response.json({answers,model:'mock',usage:{input_tokens:0}});
 };
-async function run(c,i){active=c;const response=await worker.fetch(new Request('https://example.test/api/process',{method:'POST',headers:{'content-type':'application/json','cf-connecting-ip':'test-'+i},body:JSON.stringify({text:c.text,room:c.room,device_type:'灯具',threshold:0.35})}),{JEV_API_KEY:key});return (await response.text()).trim().split('\n').map(JSON.parse);}
+async function run(c,i){active=c;const response=await worker.fetch(new Request('https://example.test/api/process',{method:'POST',headers:{'content-type':'application/json','cf-connecting-ip':'test-'+i,'x-client-id':'a0000000-0000-4000-8000-000000000001'},body:JSON.stringify({text:c.text,room:c.room,device_type:'灯具',threshold:0.35})}),{JEV_API_KEY:key,DB});return (await response.text()).trim().split('\n').map(JSON.parse);}
 for(const [i,c] of cases.entries()){
  const events=await run(c,i), batch=events.find(e=>e.kind==='execute_batch');
  assert.ok(batch,JSON.stringify(events.filter(e=>['error','result','decision'].includes(e.kind))));

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
 import worker, {numericCandidates} from '../worker/index.js';
+import {createTestD1} from './test-d1.mjs';
 
 const cases = [
   ['主卧灯亮度四十，色温三千', ['40','3000']],
@@ -43,7 +44,7 @@ if(live){
     return Response.json({answers,model:'mock',usage:{input_tokens:0}});
   };
 }
-const response=await worker.fetch(new Request('https://example.test/api/process',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:'主卧灯亮度四十，色温三千',room:'主卧',threshold:0.35})}),{JEV_API_KEY:key});
+const response=await worker.fetch(new Request('https://example.test/api/process',{method:'POST',headers:{'Content-Type':'application/json','X-Client-Id':'a0000000-0000-4000-8000-000000000001'},body:JSON.stringify({text:'主卧灯亮度四十，色温三千',room:'主卧',threshold:0.35})}),{JEV_API_KEY:key,DB:createTestD1()});
 const events=(await response.text()).trim().split('\n').map(JSON.parse);
 const execute=events.find(e=>e.kind==='execute');
 assert.ok(execute,JSON.stringify(events.filter(e=>['error','result','decision'].includes(e.kind))));
