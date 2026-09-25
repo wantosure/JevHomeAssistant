@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "JevAssistant"
+rootProject.name = "JevHomeAssistant"
 include(":app")

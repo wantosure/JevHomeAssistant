@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Jev静默助手</string>
+    <string name="app_name">JevHomeAssistant</string>
     <string name="service_running_title">Jev 正在静默监听</string>
     <string name="service_running_desc">24小时无唤醒词监听中 · 点击打开面板</string>
     <string name="observe_mode">观察模式</string>

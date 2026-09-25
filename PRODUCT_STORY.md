@@ -26,7 +26,7 @@
 
 从大厂离职后，我终于有了完整的时间。我没有选择再去画 PPT 做概念汇报，而是挽起袖子，决定为自己、也为千千万万被传统智能家居折磨的极客们，亲手重写一个真正现代化、懂思考的端侧智能家居中枢。
 
-今天，我想把这个作品——**JevAssistant**，正式介绍给大家，并且**我把它彻底开源了**。
+今天，我想把这个作品——**JevHomeAssistant**，正式介绍给大家，并且**我把它彻底开源了**。
 
 ---
 
@@ -110,9 +110,9 @@
 
 ## 如何体验与加入
 
-1. **项目源码仓库**：[GitHub - JevAssistant](https://github.com/your-username/JevAssistant)（欢迎点亮你的 ⭐️ Star 支持！）
-2. **成品安装包**：仓库 Release 页面可直接下载 `JevAssistant-v2.0.apk`，安装到 Android 手机即可使用；
+1. **项目源码仓库**：[GitHub - JevHomeAssistant](https://github.com/your-username/JevHomeAssistant)（欢迎点亮你的 ⭐️ Star 支持！）
+2. **成品安装包**：仓库 Release 页面可直接下载 `JevHomeAssistant-v2.0.apk`，安装到 Android 手机即可使用；
 3. **极客交流**：如果你也是米家全屋智能、Home Assistant 发烧友，或者对端侧大模型落地感兴趣，欢迎在 GitHub 提交 Issue 或 PR，我们一起打造下一代智能家居中枢！
 
 感谢每一位读到这里的极客朋友。  
-智能家居不应该是冰冷的指令匹配，它应该是有温度的默契。希望 JevAssistant，能带给你久违的科技感动。
+智能家居不应该是冰冷的指令匹配，它应该是有温度的默契。希望 JevHomeAssistant，能带给你久违的科技感动。

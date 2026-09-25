@@ -12,7 +12,7 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.jev.assistant.service.VoiceAssistantService
 import com.jev.assistant.ui.screens.MainScreen
-import com.jev.assistant.ui.theme.JevAssistantTheme
+import com.jev.assistant.ui.theme.JevHomeAssistantTheme
 import com.jev.assistant.viewmodel.AssistantViewModel
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         setContent {
-            JevAssistantTheme {
+            JevHomeAssistantTheme {
                 MainScreen(viewModel = viewModel)
             }
         }

@@ -1,4 +1,4 @@
-# JevAssistant 🌌
+# JevHomeAssistant 🌌
 ### 下一代基于大模型直连的极客智能家居中枢 Android 客户端
 > **无需中间云服务器 · 阿里 SenseVoice 端侧离线微弱声识别 · 米家全屋 87 台设备智能编组 · 小米 HyperOS 灵动岛深度联动**
 
@@ -11,11 +11,11 @@
 
 ---
 
-![JevAssistant Banner](./assets/banner.jpg)
+![JevHomeAssistant Banner](./assets/banner.jpg)
 
 ---
 
-## 💡 为什么开发 JevAssistant？(The "Why")
+## 💡 为什么开发 JevHomeAssistant？(The "Why")
 
 作为智能家居重度玩家，你是否也经历过这些令人抓狂的日常：
 * 🛌 **半夜耳语装聋作哑**：夜深人静怕吵醒家人，轻声说一句“关掉台灯”，传统语音助手要么毫无反应，要么大声来一句“对不起，我没听清！”；
@@ -23,7 +23,7 @@
 * 🔢 **中文数字理解障碍**：“亮度八十”、“降到百分之三十”，经常错误识别为固定预设，无法进行连续相对调节；
 * ☁️ **云端延迟与隐私焦虑**：语音被层层转录、经过三方厂商服务器二次转发，不仅慢半拍，更有隐私泄漏风险。
 
-**JevAssistant** 是为极客量身定制的下一代智能家居端侧中枢。它抛弃了任何中间云转发，**客户端直连 Jev 大模型 API**，集成**阿里 SenseVoice-Small 离线微弱声 ASR 引擎**，结合**小米 HyperOS 灵动岛焦点通知**，让全屋 87+ 台智能设备真正具备“听得懂人话、听得懂耳语、秒级执行”的思考能力。
+**JevHomeAssistant** 是为极客量身定制的下一代智能家居端侧中枢。它抛弃了任何中间云转发，**客户端直连 Jev 大模型 API**，集成**阿里 SenseVoice-Small 离线微弱声 ASR 引擎**，结合**小米 HyperOS 灵动岛焦点通知**，让全屋 87+ 台智能设备真正具备“听得懂人话、听得懂耳语、秒级执行”的思考能力。
 
 ---
 
@@ -62,7 +62,7 @@
 
 ```mermaid
 flowchart TD
-    subgraph Client ["Android 端侧客户端 (JevAssistant)"]
+    subgraph Client ["Android 端侧客户端 (JevHomeAssistant)"]
         MIC["🎙️ 麦克风录音 (16kHz PCM 单声道)"]
         VAD["⚡ 实时能量探测 (RMS / VAD)"]
         ASR{"ASR 引擎选择"}
@@ -129,7 +129,7 @@ flowchart TD
 ```bash
 # 1. 克隆代码仓库
 git clone https://github.com/wantosure/JevHomeAssistant.git
-cd JevAssistant/android-app
+cd JevHomeAssistant/android-app
 
 # 2. 配置本地 SDK / JDK 环境 (推荐 JDK 17)
 export JAVA_HOME="/path/to/jdk-17"
@@ -172,4 +172,4 @@ adb install app/build/outputs/apk/debug/app-debug.apk
 欢迎提交 Issue 与 Pull Request！  
 如果你也是对智能家居大模型落地、边缘端计算感兴趣的开发者，欢迎 Star 本项目并加入交流讨论。
 
-**License**: [MIT License](LICENSE) © 2026 JevAssistant Team
+**License**: [MIT License](LICENSE) © 2026 JevHomeAssistant Team

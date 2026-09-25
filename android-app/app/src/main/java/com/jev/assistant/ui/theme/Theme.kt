@@ -17,7 +17,7 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 @Composable
-fun JevAssistantTheme(content: @Composable () -> Unit) {
+fun JevHomeAssistantTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = DarkColorScheme,
         content = content
