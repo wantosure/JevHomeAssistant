@@ -72,10 +72,11 @@ class HomeExecutor(private val registry: DeviceRegistry) {
 
         val updatedDev = registry.findDeviceById(device.logicalId)
         val stateSummary = updatedDev?.currentState?.entries?.joinToString(", ") { "${it.key}: ${it.value}" } ?: ""
+        val humanDesc = formatActionDescription(action, params, plan.utteranceText)
 
         plan.status = RunStatus.SUCCEEDED
-        plan.statusMessage = "本地模拟设备状态已改变: $stateSummary"
-        plan.events.add(RunEvent(stage = "状态回读", message = "状态同步成功: $stateSummary"))
+        plan.statusMessage = humanDesc
+        plan.events.add(RunEvent(stage = "状态回读", message = "「${device.name}」$humanDesc (状态: $stateSummary)"))
 
         return plan
     }
@@ -90,7 +91,8 @@ class HomeExecutor(private val registry: DeviceRegistry) {
         val params = plan.parameters
 
         plan.status = RunStatus.EXECUTING
-        plan.events.add(RunEvent(stage = "批量下发", message = "正在向 ${deviceIds.size} 台设备批量下发: $action..."))
+        val actionHumanName = formatActionName(action, params, plan.utteranceText)
+        plan.events.add(RunEvent(stage = "批量下发", message = "正在向 ${deviceIds.size} 台设备批量下发: $actionHumanName..."))
         delay(180)
 
         var successCount = 0
@@ -133,10 +135,59 @@ class HomeExecutor(private val registry: DeviceRegistry) {
             }
         }
 
+        val groupDesc = "已批量$actionHumanName (共 $successCount 台设备)"
         plan.status = RunStatus.SUCCEEDED
-        plan.statusMessage = "设备组「${plan.targetDeviceName}」全部批量执行成功 (已同步 $successCount 台设备)"
-        plan.events.add(RunEvent(stage = "批量回读", message = "共 $successCount 台设备完成状态更新"))
+        plan.statusMessage = groupDesc
+        plan.events.add(RunEvent(stage = "批量回读", message = "设备组「${plan.targetDeviceName}」$groupDesc"))
 
         return plan
+    }
+
+    private fun formatActionDescription(action: String, params: Map<String, Any>, utterance: String): String {
+        return when (action) {
+            "set_power_on" -> "已开启设备"
+            "set_power_off" -> "已关闭设备"
+            "set_brightness" -> {
+                val b = (params["percent"] as? Number)?.toInt()
+                    ?: com.jev.assistant.utils.NumericExtractor.extractFirstInt(utterance)
+                    ?: 50
+                "已开启并调至亮度 $b%"
+            }
+            "set_temperature" -> {
+                val t = (params["celsius"] as? Number)?.toDouble()
+                    ?: com.jev.assistant.utils.NumericExtractor.extractFirstDouble(utterance)
+                    ?: 26.0
+                val formatted = if (t % 1.0 == 0.0) "${t.toInt()}" else "$t"
+                "已开启并调至温度 ${formatted}℃"
+            }
+            "open" -> "已完全打开"
+            "close" -> "已完全关闭"
+            "stop" -> "已停止运行"
+            else -> "已完成操作"
+        }
+    }
+
+    private fun formatActionName(action: String, params: Map<String, Any>, utterance: String): String {
+        return when (action) {
+            "set_power_on" -> "开启"
+            "set_power_off" -> "关闭"
+            "set_brightness" -> {
+                val b = (params["percent"] as? Number)?.toInt()
+                    ?: com.jev.assistant.utils.NumericExtractor.extractFirstInt(utterance)
+                    ?: 50
+                "调节亮度为 $b%"
+            }
+            "set_temperature" -> {
+                val t = (params["celsius"] as? Number)?.toDouble()
+                    ?: com.jev.assistant.utils.NumericExtractor.extractFirstDouble(utterance)
+                    ?: 26.0
+                val formatted = if (t % 1.0 == 0.0) "${t.toInt()}" else "$t"
+                "调节温度为 ${formatted}℃"
+            }
+            "open" -> "打开"
+            "close" -> "关闭"
+            "stop" -> "停止"
+            else -> "控制"
+        }
     }
 }

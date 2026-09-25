@@ -166,7 +166,13 @@ class AssistantViewModel : ViewModel() {
         storage.setApiKey(key)
     }
 
+    fun resetToBuiltinKey() {
+        storage.clearCustomApiKey()
+    }
+
     fun getApiKey(): String = storage.getApiKey()
+    fun getMaskedApiKeyForDisplay(): String = storage.getMaskedApiKeyForDisplay()
+    fun isUsingCustomKey(): Boolean = storage.isUsingCustomKey()
 
     override fun onCleared() {
         super.onCleared()

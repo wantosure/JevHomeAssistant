@@ -51,7 +51,7 @@ data class ExecutionPlan(
     var statusMessage: String = "",
     val events: MutableList<RunEvent> = java.util.concurrent.CopyOnWriteArrayList(),
     val isLive: Boolean = true,
-    var cost: Double = 0.0020
+    var cost: Double = 0.0
 )
 
 data class SilentLog(
@@ -62,7 +62,7 @@ data class SilentLog(
     val confidence: Float,
     val reason: String,
     val isIgnored: Boolean = true,
-    val cost: Double = 0.0010
+    val cost: Double = 0.0
 )
 
 data class UtteranceHistoryItem(
@@ -73,7 +73,7 @@ data class UtteranceHistoryItem(
     val room: String = "",
     val statusText: String = "",
     val isSuccess: Boolean = true,
-    val cost: Double = 0.0020
+    val cost: Double = 0.0
 )
 
 data class AlarmRecord(

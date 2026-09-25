@@ -39,7 +39,7 @@ data class JevUsage(
             totalTokens > 0 -> totalTokens
             else -> 0
         }
-        if (tokens <= 0) return 0.0001
+        if (tokens <= 0) return 0.0
         return tokens * 0.042 * 7.2 / 1_000_000.0
     }
 }

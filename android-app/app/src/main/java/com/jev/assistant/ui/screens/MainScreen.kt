@@ -668,8 +668,10 @@ fun MainScreen(viewModel: AssistantViewModel) {
                         onDeleteAlarm = { viewModel.removeAlarm(it) }
                     )
                     SheetType.SETTINGS -> SettingsSheet(
-                        initialApiKey = viewModel.getApiKey(),
+                        isUsingCustomKey = viewModel.isUsingCustomKey(),
+                        maskedKeyDisplay = viewModel.getMaskedApiKeyForDisplay(),
                         onSaveApiKey = { viewModel.saveApiKey(it) },
+                        onResetToBuiltinKey = { viewModel.resetToBuiltinKey() },
                         currentEngineName = asrEngineName,
                         onSwitchEngine = { viewModel.switchAsrEngine(it) },
                         crashLog = crashLog,

@@ -37,6 +37,27 @@ class VoiceAssistantService : Service() {
             }
             context.startService(intent)
         }
+
+        fun updateLatestOperation(context: Context, summary: String) {
+            try {
+                val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as? android.app.NotificationManager
+                val pendingIntent = PendingIntent.getActivity(
+                    context,
+                    0,
+                    Intent(context, MainActivity::class.java),
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+                val notification = NotificationCompat.Builder(context, JevApp.CHANNEL_SERVICE_ID)
+                    .setContentTitle("Jev 智能家居 · 静默监听中")
+                    .setContentText("最新操作: $summary")
+                    .setSmallIcon(android.R.drawable.ic_btn_speak_now)
+                    .setContentIntent(pendingIntent)
+                    .setOngoing(true)
+                    .setPriority(NotificationCompat.PRIORITY_LOW)
+                    .build()
+                notificationManager?.notify(NOTIFICATION_ID, notification)
+            } catch (_: Throwable) {}
+        }
     }
 
     override fun onBind(intent: Intent?): IBinder? = null

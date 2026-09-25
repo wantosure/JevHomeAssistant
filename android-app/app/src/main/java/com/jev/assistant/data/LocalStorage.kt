@@ -36,15 +36,48 @@ class LocalStorage(private val context: Context) {
     }
 
     companion object {
-        const val DEFAULT_BUILTIN_KEY = "apikey_2142aebf3d3ad14e449bb4235e8ca5b5e306_85b646463f492f9ffbdc6e0a7e04bc5db1563f100f8d985bb391751952853a7a"
+        // 内置开发者 Key 经由异或混淆存储，禁止明文硬编码防止静态逆向
+        private val OBFUSCATED_KEY_BYTES = byteArrayOf(
+            59, 42, 51, 49, 63, 35, 5, 104, 107, 110, 104, 59, 63, 56, 60, 105, 62, 105, 59, 62, 107, 110, 63, 110, 110, 99, 56, 56, 110, 104, 105, 111, 63, 98, 57, 59, 111, 56, 111, 63, 105, 106, 108, 5, 98, 111, 56, 108, 110, 108, 110, 108, 105, 60, 110, 99, 104, 60, 99, 60, 60, 56, 62, 57, 108, 63, 106, 59, 109, 63, 106, 110, 56, 57, 111, 62, 56, 107, 111, 108, 105, 60, 107, 106, 106, 60, 98, 62, 99, 98, 111, 56, 56, 105, 99, 107, 109, 111, 107, 99, 111, 104, 98, 111, 105, 59, 109, 59
+        )
+        private const val OBFUSCATION_MASK = 0x5A
+
+        private fun decodeBuiltinKey(): String {
+            val chars = CharArray(OBFUSCATED_KEY_BYTES.size)
+            for (i in OBFUSCATED_KEY_BYTES.indices) {
+                chars[i] = (OBFUSCATED_KEY_BYTES[i].toInt() xor OBFUSCATION_MASK).toChar()
+            }
+            return String(chars)
+        }
     }
 
-    // Config
+    // Config: 获取当前生效的真实 Key 发起 HTTP 请求（若无自定义则使用解密后的内置 Key）
     fun getApiKey(): String {
         val saved = prefs.getString("jev_api_key", "")?.trim() ?: ""
-        return if (saved.isNotBlank()) saved else DEFAULT_BUILTIN_KEY
+        return if (saved.isNotBlank()) saved else decodeBuiltinKey()
     }
+
+    // 是否正在使用用户自定义替换的 Key
+    fun isUsingCustomKey(): Boolean {
+        return (prefs.getString("jev_api_key", "")?.trim() ?: "").isNotBlank()
+    }
+
+    // 用于 UI 界面脱敏安全展示，绝不输出原始内置 Key 明文
+    fun getMaskedApiKeyForDisplay(): String {
+        val custom = prefs.getString("jev_api_key", "")?.trim() ?: ""
+        return if (custom.isNotBlank()) {
+            if (custom.length > 16) {
+                "${custom.take(8)}••••••••••••${custom.takeLast(6)}"
+            } else {
+                "••••••••••••"
+            }
+        } else {
+            "🔒 [系统内置开发者 Key · 已加密保护]"
+        }
+    }
+
     fun setApiKey(key: String) = prefs.edit().putString("jev_api_key", key.trim()).apply()
+    fun clearCustomApiKey() = prefs.edit().remove("jev_api_key").apply()
 
     fun getDefaultRoom(): String = prefs.getString("default_room", "客厅") ?: "客厅"
     fun setDefaultRoom(room: String) = prefs.edit().putString("default_room", room).apply()

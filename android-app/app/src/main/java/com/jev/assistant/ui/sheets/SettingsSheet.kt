@@ -64,8 +64,10 @@ import com.jev.assistant.ui.theme.TextSecondary
 
 @Composable
 fun SettingsSheet(
-    initialApiKey: String,
+    isUsingCustomKey: Boolean,
+    maskedKeyDisplay: String,
     onSaveApiKey: (String) -> Unit,
+    onResetToBuiltinKey: () -> Unit,
     currentEngineName: String,
     onSwitchEngine: (Boolean) -> Unit,
     crashLog: String?,
@@ -77,7 +79,7 @@ fun SettingsSheet(
     onResetCost: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
-    var apiKeyText by remember { mutableStateOf(initialApiKey) }
+    var apiKeyText by remember { mutableStateOf("") }
     var saveSuccess by remember { mutableStateOf(false) }
     var showCrashDetails by remember { mutableStateOf(false) }
     val context = LocalContext.current
@@ -211,13 +213,14 @@ fun SettingsSheet(
             ) {
                 Column {
                     Text(
-                        text = "累计消费: ¥${String.format("%.4f", totalCost)}",
+                        text = "累计消费: ¥${String.format(java.util.Locale.CHINA, "%.4f", totalCost)}",
                         color = AmberAccent,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
                     )
+                    val avgCost = if (totalCalls > 0) totalCost / totalCalls else 0.0
                     Text(
-                        text = "累计调用: $totalCalls 次 · 单次均费约 ¥0.0020",
+                        text = "累计调用: $totalCalls 次 · 均费: ¥${String.format(java.util.Locale.CHINA, "%.4f", avgCost)} (纯Token精算)",
                         color = TextMuted,
                         fontSize = 11.sp
                     )
@@ -365,22 +368,50 @@ fun SettingsSheet(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // ===== 3. Jev API Key 配置 =====
-        val effectiveKey = if (apiKeyText.isNotBlank()) apiKeyText else com.jev.assistant.data.LocalStorage.DEFAULT_BUILTIN_KEY
+        // ===== 3. Jev API Key 安全配置 =====
         Text(
-            text = "🔑 Jev API Key (默认已写死内置密钥)",
+            text = "🔑 Jev API Key 安全配置",
             color = TextPrimary,
             fontSize = 14.sp,
-            fontWeight = FontWeight.Medium
+            fontWeight = FontWeight.Bold
         )
         Spacer(modifier = Modifier.height(6.dp))
+
+        // 当前 Key 状态安全标识卡片
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(if (isUsingCustomKey) CyanAccent.copy(alpha = 0.15f) else EmeraldAccent.copy(alpha = 0.15f))
+                .border(1.dp, if (isUsingCustomKey) CyanAccent.copy(alpha = 0.4f) else EmeraldAccent.copy(alpha = 0.4f), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Column {
+                Text(
+                    text = if (isUsingCustomKey) "当前状态：已使用自定义 Key" else "当前状态：已启用内置开发者 Key (开箱即用)",
+                    color = if (isUsingCustomKey) CyanAccent else EmeraldAccent,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    text = maskedKeyDisplay,
+                    color = TextSecondary,
+                    fontSize = 11.sp,
+                    fontFamily = FontFamily.Monospace
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
         OutlinedTextField(
-            value = if (apiKeyText.isBlank()) com.jev.assistant.data.LocalStorage.DEFAULT_BUILTIN_KEY else apiKeyText,
+            value = apiKeyText,
             onValueChange = {
                 apiKeyText = it
                 saveSuccess = false
             },
-            placeholder = { Text("输入您的 TYPESAFE_API_KEY", color = TextMuted, fontSize = 13.sp) },
+            placeholder = { Text("在此输入您的 Jev API Key 进行替换", color = TextMuted, fontSize = 12.sp) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             colors = OutlinedTextFieldDefaults.colors(
@@ -397,29 +428,38 @@ fun SettingsSheet(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            OutlinedButton(
-                onClick = {
-                    apiKeyText = com.jev.assistant.data.LocalStorage.DEFAULT_BUILTIN_KEY
-                    onSaveApiKey(apiKeyText)
-                    saveSuccess = true
-                },
-                modifier = Modifier.weight(1f),
-                shape = RoundedCornerShape(10.dp)
-            ) {
-                Text("恢复默认内置 Key", fontSize = 12.sp, color = CyanAccent)
+            if (isUsingCustomKey) {
+                OutlinedButton(
+                    onClick = {
+                        onResetToBuiltinKey()
+                        apiKeyText = ""
+                        saveSuccess = false
+                        Toast.makeText(context, "已恢复为系统内置加密 Key", Toast.LENGTH_SHORT).show()
+                    },
+                    modifier = Modifier.weight(1f),
+                    shape = RoundedCornerShape(10.dp)
+                ) {
+                    Text("恢复内置 Key", fontSize = 12.sp, color = AmberAccent)
+                }
             }
 
             Button(
                 onClick = {
-                    onSaveApiKey(apiKeyText)
-                    saveSuccess = true
+                    if (apiKeyText.isNotBlank()) {
+                        onSaveApiKey(apiKeyText)
+                        saveSuccess = true
+                        apiKeyText = ""
+                        Toast.makeText(context, "已成功保存并切换为您的自定义 Key", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "请输入有效的 API Key", Toast.LENGTH_SHORT).show()
+                    }
                 },
                 modifier = Modifier.weight(1f),
                 colors = ButtonDefaults.buttonColors(containerColor = CyanAccent),
                 shape = RoundedCornerShape(10.dp)
             ) {
                 Text(
-                    text = if (saveSuccess) "✓ 已安全保存" else "保存配置",
+                    text = if (saveSuccess) "✓ 已保存生效" else "保存替换 Key",
                     color = DarkBackground,
                     fontWeight = FontWeight.Bold
                 )

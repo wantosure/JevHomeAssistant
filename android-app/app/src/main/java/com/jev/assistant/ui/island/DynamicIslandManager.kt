@@ -47,14 +47,20 @@ object DynamicIslandManager {
         room: String,
         deviceName: String,
         actionDesc: String,
-        cost: Double = 0.0020
+        cost: Double = 0.0
     ) {
         mainHandler.post {
             try {
-                // 1. 发射小米 HyperOS 官方焦点通知 (HyperOS Focus Notification)
+                // 1. 发射小米 HyperOS 官方焦点通知与通知栏操作卡片
                 postHyperOsFocusNotice(context, room, deviceName, actionDesc, cost)
 
-                // 2. 如果具备悬浮窗权限，弹出屏幕顶部沉浸式灵动岛药丸
+                // 2. 同步更新前台常驻服务状态
+                com.jev.assistant.service.VoiceAssistantService.updateLatestOperation(
+                    context,
+                    "[$room] $deviceName $actionDesc"
+                )
+
+                // 3. 如果具备悬浮窗权限，弹出屏幕顶部沉浸式灵动岛药丸
                 if (Settings.canDrawOverlays(context)) {
                     showOverlayIsland(context, room, deviceName, actionDesc, cost)
                 }
@@ -65,7 +71,7 @@ object DynamicIslandManager {
     }
 
     /**
-     * 小米 HyperOS 官方焦点通知 (状态栏胶囊)
+     * 小米 HyperOS 官方焦点通知 (状态栏胶囊) 与通知栏操作卡片
      */
     private fun postHyperOsFocusNotice(
         context: Context,
@@ -86,19 +92,21 @@ object DynamicIslandManager {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
+        val costFormatted = if (cost > 0.0) "¥${String.format(java.util.Locale.CHINA, "%.4f", cost)}" else "¥0.0000"
+
         // 适配小米 HyperOS 焦点通知 Extra 协议
         val extra = Bundle().apply {
             putBoolean("miui.focusNotice", true)
             putString("miui.focusState", "active")
             putString("miui.focusType", "smart_home")
             putString("miui.focusTitle", "💡 [$room] $deviceName")
-            putString("miui.focusContent", "$actionDesc (¥${String.format("%.4f", cost)})")
+            putString("miui.focusContent", "$actionDesc ($costFormatted)")
         }
 
         val notification = NotificationCompat.Builder(context, JevApp.CHANNEL_SERVICE_ID)
             .setSmallIcon(android.R.drawable.ic_btn_speak_now)
             .setContentTitle("💡 [$room] $deviceName")
-            .setContentText("$actionDesc · 消耗 ¥${String.format("%.4f", cost)}")
+            .setContentText("$actionDesc · 消耗 $costFormatted")
             .setSubText("Jev 智能家居")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setCategory(NotificationCompat.CATEGORY_EVENT)
@@ -109,13 +117,6 @@ object DynamicIslandManager {
             .build()
 
         manager.notify(ISLAND_NOTIFICATION_ID, notification)
-
-        // 5秒后清除焦点通知
-        mainHandler.postDelayed({
-            try {
-                manager.cancel(ISLAND_NOTIFICATION_ID)
-            } catch (_: Exception) {}
-        }, 5000)
     }
 
     /**
