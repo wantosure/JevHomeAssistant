@@ -21,7 +21,7 @@ class DeviceRegistry(private val context: Context) {
     private val _groupsFlow = MutableStateFlow<List<DeviceGroup>>(emptyList())
     val groupsFlow: StateFlow<List<DeviceGroup>> = _groupsFlow.asStateFlow()
 
-    private val roomAliases = mapOf(
+    val roomAliases = mapOf(
         "卧室" to "主卧",
         "我的卧室" to "主卧",
         "大厅" to "客厅",

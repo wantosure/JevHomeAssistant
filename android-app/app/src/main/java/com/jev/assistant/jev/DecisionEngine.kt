@@ -172,30 +172,43 @@ class DecisionEngine(
         plan: ExecutionPlan,
         isLive: Boolean
     ) {
-        // 1. 优先检查是否为设备组批量控制（需求 5）
+        // 1. 优先检查是否为设备组批量控制（包含普通群控与反向排除群控）
         val isGroup = DeviceGroupManager.isGroupCommand(text)
         if (isGroup) {
-            val matchedGroup = DeviceGroupManager.matchGroup(text, registry.groupsFlow.value)
+            val matchedGroup = DeviceGroupManager.matchGroup(
+                text = text,
+                groups = registry.groupsFlow.value,
+                devices = registry.devicesFlow.value,
+                roomAliases = registry.roomAliases
+            )
             if (matchedGroup != null) {
                 plan.targetDeviceId = matchedGroup.id
                 plan.targetDeviceName = matchedGroup.name
+                if (matchedGroup.scope.startsWith("全屋(除")) {
+                    plan.room = matchedGroup.scope
+                }
 
-                val action = when {
+                var action = when {
                     text.contains("关") -> "set_power_off"
                     text.contains("开") -> "set_power_on"
                     text.contains("新风") -> "set_mode_fresh_air"
                     else -> "set_power_on"
                 }
-                plan.action = action
                 val params = mutableMapOf<String, Any>(
                     "is_group" to true,
                     "device_ids" to matchedGroup.deviceIds
                 )
-                // 检查是否附带数值（如所有灯亮度80）
+                // 检查是否附带数值（如所有灯亮度80，空调26度）
                 val nums = NumericExtractor.extractNumbers(text)
                 if (nums.isNotEmpty() && text.contains("亮度")) {
                     params["percent"] = nums[0].toInt().coerceIn(1, 100)
+                    action = "set_brightness"
                 }
+                if (nums.isNotEmpty() && (text.contains("度") || text.contains("温度"))) {
+                    params["celsius"] = nums[0].toDouble().coerceIn(16.0, 32.0)
+                    action = "set_temperature"
+                }
+                plan.action = action
                 plan.parameters = params
 
                 plan.events.add(
@@ -418,7 +431,7 @@ class DecisionEngine(
     private fun localStageOneFallback(text: String): Triple<String, String, Float> {
         val t = text.lowercase()
         return when {
-            t.contains("灯") || t.contains("空调") || t.contains("风扇") || t.contains("窗帘") || t.contains("晾衣") || t.contains("插座") || t.contains("音箱") || t.contains("所有") || t.contains("全关") -> {
+            t.contains("灯") || t.contains("空调") || t.contains("风扇") || t.contains("窗帘") || t.contains("晾衣") || t.contains("插座") || t.contains("音箱") || t.contains("所有") || t.contains("全关") || t.contains("除了") || t.contains("除开") || t.contains("其他") || t.contains("其余") || t.contains("都关") || t.contains("都开") -> {
                 Triple("actionable", "home_control", 0.98f)
             }
             t.contains("闹钟") || t.contains("提醒我") -> {

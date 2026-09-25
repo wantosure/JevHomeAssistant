@@ -86,6 +86,8 @@ dependencies {
     // Security & EncryptedSharedPreferences (Keystore integration)
     implementation("androidx.security:security-crypto:1.1.0-alpha06")
 
+    testImplementation("junit:junit:4.13.2")
+
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }

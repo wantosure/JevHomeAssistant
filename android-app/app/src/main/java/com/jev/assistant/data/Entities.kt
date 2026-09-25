@@ -46,7 +46,7 @@ data class ExecutionPlan(
     var targetDeviceId: String,
     var action: String,
     var parameters: Map<String, Any> = emptyMap(),
-    val room: String,
+    var room: String,
     var status: RunStatus = RunStatus.ACCEPTED,
     var statusMessage: String = "",
     val events: MutableList<RunEvent> = java.util.concurrent.CopyOnWriteArrayList(),
