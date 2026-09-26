@@ -19,7 +19,7 @@ class DeviceGroupManagerTest {
             icon = "💡",
             capabilities = listOf("power", "brightness"),
             rawCapabilities = emptyList(),
-            mappingStatus = MappingStatus.SIMULATED_ACTIVE,
+            mappingStatus = MappingStatus.MAPPED,
             currentState = mutableMapOf<String, Any>("power" to 1)
         ),
         DeviceItem(
@@ -33,7 +33,7 @@ class DeviceGroupManagerTest {
             icon = "💡",
             capabilities = listOf("power", "brightness"),
             rawCapabilities = emptyList(),
-            mappingStatus = MappingStatus.SIMULATED_ACTIVE,
+            mappingStatus = MappingStatus.MAPPED,
             currentState = mutableMapOf<String, Any>("power" to 1)
         ),
         DeviceItem(
@@ -47,7 +47,7 @@ class DeviceGroupManagerTest {
             icon = "💡",
             capabilities = listOf("power", "brightness"),
             rawCapabilities = emptyList(),
-            mappingStatus = MappingStatus.SIMULATED_ACTIVE,
+            mappingStatus = MappingStatus.MAPPED,
             currentState = mutableMapOf<String, Any>("power" to 1)
         ),
         DeviceItem(
@@ -61,7 +61,7 @@ class DeviceGroupManagerTest {
             icon = "💡",
             capabilities = listOf("power"),
             rawCapabilities = emptyList(),
-            mappingStatus = MappingStatus.SIMULATED_ACTIVE,
+            mappingStatus = MappingStatus.MAPPED,
             currentState = mutableMapOf<String, Any>("power" to 1)
         ),
         DeviceItem(
@@ -75,7 +75,7 @@ class DeviceGroupManagerTest {
             icon = "💡",
             capabilities = listOf("power"),
             rawCapabilities = emptyList(),
-            mappingStatus = MappingStatus.SIMULATED_ACTIVE,
+            mappingStatus = MappingStatus.MAPPED,
             currentState = mutableMapOf<String, Any>("power" to 1)
         ),
         DeviceItem(
@@ -89,7 +89,7 @@ class DeviceGroupManagerTest {
             icon = "💡",
             capabilities = listOf("power"),
             rawCapabilities = emptyList(),
-            mappingStatus = MappingStatus.SIMULATED_ACTIVE,
+            mappingStatus = MappingStatus.MAPPED,
             currentState = mutableMapOf<String, Any>("power" to 1)
         )
     )

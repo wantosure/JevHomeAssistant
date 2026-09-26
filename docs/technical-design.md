@@ -1,6 +1,17 @@
 # 安卓静默语音助手：无云端服务技术设计
 
-版本：2.0 · 2026-09-24。需求以 [需求文档](requirements.md) 为准，设备 ID 和标准动作以 [设备协议](device-control-contract.md) 为准。
+版本：2.1 · 2026-09-26。需求以 [需求文档](requirements.md) 为准，设备 ID 和标准动作以 [设备协议](device-control-contract.md) 为准。
+
+> **v2.1 补充**：设备已接入真实米家云，见 [米家接入说明](miot-integration.md)。
+> 该文档给出授权流程、加密信封、能力解析、多家庭语义与安全门控的实现依据。
+>
+> 与本文早期的差异：
+> - 设备目录不再来自随包资源，改为由米家云同步；未绑定时应用内没有设备；
+> - 不存在独立的 `ObserverExecutor` 类，观察模式由 `HomeExecutor` 的 `isLive` 门控实现，
+>   终态为 `RunStatus.PLANNED`；
+> - 适配器契约（`listDevices` / `getCapabilities` / `execute` / `readState`）的代码落点
+>   为 `device/DeviceAdapter.kt`；
+> - 小米账号的令牌使用 Keystore 加密存储，与 Jev API Key 的存储方式不同。
 
 ## 1. 关键结论
 

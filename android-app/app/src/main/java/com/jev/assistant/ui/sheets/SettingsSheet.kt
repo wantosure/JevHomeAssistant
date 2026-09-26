@@ -77,6 +77,9 @@ fun SettingsSheet(
     totalCost: Double = 0.0,
     totalCalls: Int = 0,
     onResetCost: () -> Unit = {},
+    mijiaBound: Boolean = false,
+    mijiaSummary: String = "",
+    onOpenMijia: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     var apiKeyText by remember { mutableStateOf("") }
@@ -102,6 +105,54 @@ fun SettingsSheet(
             fontSize = 12.sp,
             modifier = Modifier.padding(top = 4.dp, bottom = 14.dp)
         )
+
+        // ===== 0. 米家账号 =====
+        Text(
+            text = "🏠 米家账号",
+            color = TextPrimary,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp, bottom = 14.dp)
+                .background(
+                    if (mijiaBound) EmeraldAccent.copy(alpha = 0.08f) else AmberAccent.copy(alpha = 0.08f),
+                    RoundedCornerShape(12.dp),
+                )
+                .border(
+                    1.dp,
+                    if (mijiaBound) EmeraldAccent.copy(alpha = 0.35f) else AmberAccent.copy(alpha = 0.35f),
+                    RoundedCornerShape(12.dp),
+                )
+                .padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = if (mijiaBound) "已绑定" else "未绑定",
+                    color = if (mijiaBound) EmeraldAccent else AmberAccent,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    text = mijiaSummary.ifBlank {
+                        if (mijiaBound) "可管理家庭与设备同步" else "绑定后才能读取与控制真实设备"
+                    },
+                    color = TextMuted,
+                    fontSize = 11.sp,
+                    modifier = Modifier.padding(top = 2.dp),
+                )
+            }
+            OutlinedButton(
+                onClick = onOpenMijia,
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = CyanAccent),
+                shape = RoundedCornerShape(10.dp),
+            ) {
+                Text(if (mijiaBound) "管理" else "去绑定", fontSize = 12.sp)
+            }
+        }
 
         // ===== 1. ASR 语音识别引擎切换 =====
         Text(

@@ -6,7 +6,19 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import com.jev.assistant.data.LocalStorage
+import com.jev.assistant.device.AdapterStatus
 import com.jev.assistant.device.DeviceRegistry
+import com.jev.assistant.miot.MiotCloudClient
+import com.jev.assistant.miot.MiotCredentials
+import com.jev.assistant.miot.MiotDeviceCache
+import com.jev.assistant.miot.MiotDeviceRepository
+import com.jev.assistant.miot.MiotSpecRepository
+import com.jev.assistant.miot.auth.MiotAccountManager
+import com.jev.assistant.miot.auth.MiotAuthStore
+import com.jev.assistant.miot.auth.MiotBindStatus
+import com.jev.assistant.miot.auth.MiotOAuthClient
+import com.jev.assistant.miot.auth.MiotTokenStore
+import java.io.File
 
 class JevApp : Application() {
 
@@ -23,6 +35,15 @@ class JevApp : Application() {
     lateinit var storage: LocalStorage
         private set
     lateinit var deviceRegistry: DeviceRegistry
+        private set
+
+    lateinit var miotAccountManager: MiotAccountManager
+        private set
+    lateinit var miotCloudClient: MiotCloudClient
+        private set
+    lateinit var miotSpecRepository: MiotSpecRepository
+        private set
+    lateinit var miotDeviceRepository: MiotDeviceRepository
         private set
 
     override fun onCreate() {
@@ -44,9 +65,59 @@ class JevApp : Application() {
         }
 
         storage = LocalStorage(this)
-        deviceRegistry = DeviceRegistry(this)
+        deviceRegistry = DeviceRegistry()
+
+        setUpMiot()
 
         createNotificationChannels()
+    }
+
+    /**
+     * 装配米家云接入。
+     *
+     * 依赖关系存在环（云客户端需要令牌续期，账号管理需要云客户端换令牌），
+     * 因此令牌来源以 lambda 注入，在真正发起请求时才求值。
+     */
+    private fun setUpMiot() {
+        // 凭据目前取默认值；用户自定义 client_id 与区域在设置页接入后由此读取
+        val credentials: () -> MiotCredentials = { MiotCredentials() }
+
+        miotCloudClient = MiotCloudClient(
+            credentialsProvider = credentials,
+            accessTokenProvider = { miotAccountManager.currentAccessToken() },
+            onUnauthorized = {
+                miotAccountManager.ensureFresh(force = true).getOrNull()?.accessToken
+            },
+        )
+
+        val store: MiotAuthStore = MiotTokenStore(this)
+        miotAccountManager = MiotAccountManager(
+            store = store,
+            oauth = MiotOAuthClient(credentials, miotCloudClient),
+            credentialsProvider = credentials,
+            // 绑定状态一旦变化就切回观察模式：换了账号环境后，
+            // 不允许沿用上一轮可能已是 LIVE 的模式直接对真实设备下发指令。
+            onBindingChanged = { storage.setLiveMode(false) },
+        )
+
+        val cacheRoot = File(filesDir, "miot")
+        miotSpecRepository = MiotSpecRepository.create(File(cacheRoot, "specs"), miotCloudClient)
+        miotDeviceRepository = MiotDeviceRepository(
+            cloud = miotCloudClient,
+            specRepository = miotSpecRepository,
+            cache = MiotDeviceCache(File(cacheRoot, "devices")),
+        )
+
+        miotAccountManager.initialize()
+        deviceRegistry.updateAdapterStatus(
+            when (miotAccountManager.status.value) {
+                is MiotBindStatus.Bound -> AdapterStatus.Syncing
+                is MiotBindStatus.Expired ->
+                    AdapterStatus.AuthExpired("授权已失效，请重新绑定米家账号")
+
+                MiotBindStatus.Unbound -> AdapterStatus.Unbound
+            },
+        )
     }
 
     private fun createNotificationChannels() {

@@ -148,7 +148,24 @@ class SenseVoiceAsrEngine(
                 try { inputStream?.close() } catch (_: Exception) {}
                 try { outputStream?.close() } catch (_: Exception) {}
             }
-            tmpFile.renameTo(destFile)
+            if (!tmpFile.renameTo(destFile)) {
+                tmpFile.copyTo(destFile, overwrite = true)
+                tmpFile.delete()
+            }
+
+            // 必须校验落盘后的真实大小。
+            // 仓库用 Git LFS 管理 onnx 文件，未执行 `git lfs pull` 时资源是几百字节的
+            // 指针文本。那种内容交给原生推理库会在 C++ 层直接 abort，Java 的
+            // catch 拦不住，表现为打开即闪退。这里主动失败，让上层降级到系统 ASR。
+            if (destFile.length() < expectedMinSize) {
+                destFile.delete()
+                throw IllegalStateException(
+                    "模型文件 $assetPath 大小异常（实际 ${destFile.length()} 字节，" +
+                        "期望至少 $expectedMinSize 字节）。若资源是 Git LFS 指针，" +
+                        "请先执行 git lfs pull 再重新构建。",
+                )
+            }
+
             Log.i(TAG, "成功解压模型文件: ${destFile.name} (${destFile.length()} bytes)")
         } catch (e: Exception) {
             tmpFile.delete()

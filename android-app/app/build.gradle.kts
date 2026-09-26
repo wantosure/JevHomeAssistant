@@ -63,6 +63,14 @@ android {
             useLegacyPackaging = true
         }
     }
+    testOptions {
+        unitTests {
+            // 让 android.util.Log 等框架桩在 JVM 单测中返回默认值而不是抛
+            // "Method not mocked"。米家接入的协议层与绑定流程靠纯 JVM 单测覆盖，
+            // 其中只用到 Log 这类无副作用的框架方法。
+            isReturnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
@@ -87,6 +95,7 @@ dependencies {
     implementation("androidx.security:security-crypto:1.1.0-alpha06")
 
     testImplementation("junit:junit:4.13.2")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")

@@ -1,5 +1,7 @@
 package com.jev.assistant.ui.screens
 
+import android.widget.Toast
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -30,6 +32,8 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material3.BottomSheetScaffold
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
@@ -61,7 +65,9 @@ import com.jev.assistant.ui.components.SimulatedDeviceCard
 import com.jev.assistant.ui.components.SubtitleFlowView
 import com.jev.assistant.ui.components.TopControlBar
 import com.jev.assistant.ui.sheets.AlarmSheet
+import com.jev.assistant.ui.sheets.MijiaBindSheet
 import com.jev.assistant.ui.sheets.SettingsSheet
+import com.jev.assistant.ui.sheets.formatEpochSeconds
 import com.jev.assistant.ui.theme.CyanAccent
 import com.jev.assistant.ui.theme.DarkBackground
 import com.jev.assistant.ui.theme.DarkSurface
@@ -78,7 +84,8 @@ enum class SheetType {
     NONE,
     ALARMS,
     SETTINGS,
-    ROOMS
+    ROOMS,
+    MIJIA_BIND
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -99,6 +106,9 @@ fun MainScreen(viewModel: AssistantViewModel) {
     val historyList by viewModel.historyList.collectAsState()
     val totalJevCost by viewModel.totalJevCost.collectAsState()
     val totalJevCalls by viewModel.totalJevCalls.collectAsState()
+    // 房间列表来自真实同步结果，不再硬编码
+    val rooms by viewModel.rooms.collectAsState()
+    val isMijiaBound = viewModel.isMijiaBound
     val context = androidx.compose.ui.platform.LocalContext.current
 
     var activeDialogSheet by remember { mutableStateOf(SheetType.NONE) }
@@ -257,7 +267,16 @@ fun MainScreen(viewModel: AssistantViewModel) {
                 }
             }
 
-            // 4. 全屏滚动的 87 台设备列表 (实时动态变化)
+            // 4. 设备列表。未绑定时必须给出解释，否则只是一个空白看板
+            if (devices.isEmpty()) {
+                DeviceListEmptyState(
+                    bound = isMijiaBound,
+                    onOpenBind = { activeDialogSheet = SheetType.MIJIA_BIND },
+                    onResync = { viewModel.syncMijiaDevices() },
+                    modifier = Modifier.weight(1f),
+                )
+            }
+
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -608,7 +627,7 @@ fun MainScreen(viewModel: AssistantViewModel) {
 
                 // 5. 快速测试滑轨（包含设备编组和数值调节）
                 Text(
-                    text = "快速语音场景模拟 (支持设备编组与数值精确解析)",
+                    text = "快速指令测试（支持设备编组与数值解析）",
                     color = TextMuted,
                     fontSize = 11.sp,
                     modifier = Modifier.padding(bottom = 6.dp)
@@ -680,8 +699,52 @@ fun MainScreen(viewModel: AssistantViewModel) {
                         onCopyDiagnosticReport = { viewModel.copyDiagnosticReport(context) },
                         totalCost = totalJevCost,
                         totalCalls = totalJevCalls,
-                        onResetCost = { viewModel.resetJevCost() }
+                        onResetCost = { viewModel.resetJevCost() },
+                        mijiaBound = isMijiaBound,
+                        mijiaSummary = if (isMijiaBound) {
+                            "${devices.size} 台设备 · ${devices.count { it.isOnline }} 在线"
+                        } else {
+                            ""
+                        },
+                        onOpenMijia = { activeDialogSheet = SheetType.MIJIA_BIND }
                     )
+                    SheetType.MIJIA_BIND -> {
+                        val bindStatus by viewModel.miotBindStatus.collectAsState()
+                        val homes by viewModel.homes.collectAsState()
+                        val activeHome by viewModel.activeHomeId.collectAsState()
+                        val adapterState by viewModel.adapterStatus.collectAsState()
+                        val bound = bindStatus is com.jev.assistant.miot.auth.MiotBindStatus.Bound
+
+                        MijiaBindSheet(
+                            bound = bound,
+                            nickname = (bindStatus as? com.jev.assistant.miot.auth.MiotBindStatus.Bound)?.nickname,
+                            expiresAtText = (bindStatus as? com.jev.assistant.miot.auth.MiotBindStatus.Bound)
+                                ?.expiresAtSec?.let { formatEpochSeconds(it) },
+                            nextRefreshText = (bindStatus as? com.jev.assistant.miot.auth.MiotBindStatus.Bound)
+                                ?.nextRefreshAtSec?.let { "将于 ${formatEpochSeconds(it)} 自动续期" },
+                            deviceSummary = "${devices.size} 台设备 · ${devices.count { it.isOnline }} 在线",
+                            statusNote = when (val s = adapterState) {
+                                is com.jev.assistant.device.AdapterStatus.Failed -> s.message
+                                is com.jev.assistant.device.AdapterStatus.AuthExpired -> s.message
+                                else -> null
+                            },
+                            homes = homes,
+                            activeHomeId = activeHome,
+                            onBuildAuthUrl = { viewModel.buildMijiaAuthUrl() },
+                            onSubmitPayload = { payload ->
+                                viewModel.bindMijia(payload) { ok, message ->
+                                    Toast.makeText(
+                                        context,
+                                        if (ok) "绑定成功，已切回观察模式" else (message ?: "绑定失败"),
+                                        Toast.LENGTH_LONG,
+                                    ).show()
+                                }
+                            },
+                            onResync = { viewModel.syncMijiaDevices() },
+                            onSelectHome = { viewModel.setActiveHome(it) },
+                            onUnbind = { viewModel.unbindMijia() },
+                        )
+                    }
                     SheetType.ROOMS -> {
                         Column(modifier = Modifier.padding(16.dp)) {
                             Text(text = "切换默认区域倾向", color = CyanAccent, fontSize = 16.sp, fontWeight = FontWeight.Bold)
@@ -691,7 +754,8 @@ fun MainScreen(viewModel: AssistantViewModel) {
                                 fontSize = 12.sp,
                                 modifier = Modifier.padding(top = 2.dp, bottom = 12.dp)
                             )
-                            listOf("全屋", "客厅", "主卧", "次卧", "儿童房", "厨房", "餐厅", "主卫", "客卫", "阳台", "玄关").forEach { room ->
+                            // 房间列表来自真实同步结果，不再硬编码
+                            rooms.forEach { room ->
                                 Box(
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -719,4 +783,60 @@ fun MainScreen(viewModel: AssistantViewModel) {
         }
     }
 }
+}
+
+/**
+ * 设备列表的空状态。
+ *
+ * 接入真实米家后设备不再来自随包资源，未绑定时列表就是空的。
+ * 空白看板会让人以为功能坏了，必须明确说明原因并给出下一步。
+ */
+@Composable
+private fun DeviceListEmptyState(
+    bound: Boolean,
+    onOpenBind: () -> Unit,
+    onResync: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Text(
+            text = if (bound) "📭" else "🏠",
+            fontSize = 40.sp,
+        )
+        Text(
+            text = if (bound) "暂无设备" else "尚未绑定米家账号",
+            color = TextPrimary,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 12.dp),
+        )
+        Text(
+            text = if (bound) {
+                "当前家庭下没有设备，可能是同步失败或该家庭确实为空。"
+            } else {
+                "绑定后即可读取你真实的米家设备与房间，并按房间进行语音控制。"
+            },
+            color = TextMuted,
+            fontSize = 12.sp,
+            modifier = Modifier.padding(top = 6.dp),
+        )
+
+        Button(
+            onClick = if (bound) onResync else onOpenBind,
+            modifier = Modifier.padding(top = 16.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = CyanAccent,
+                contentColor = DarkBackground,
+            ),
+            shape = RoundedCornerShape(12.dp),
+        ) {
+            Text(if (bound) "重新同步设备" else "去绑定米家账号", fontWeight = FontWeight.Bold)
+        }
+    }
 }

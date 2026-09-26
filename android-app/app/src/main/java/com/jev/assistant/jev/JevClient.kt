@@ -66,6 +66,23 @@ class JevClient(private val getApiKey: () -> String) {
             }
         }
 
+    /**
+     * 构造喂给模型的设备描述。
+     *
+     * 只列出**可写**能力并带上范围/枚举/单位，让模型能据此选择合法参数。
+     * 只读能力（如温度读数）不列出，避免被误当成可设置的目标。
+     */
+    private fun describeDeviceForPrompt(device: DeviceItem): String {
+        val writable = device.rawCapabilities.filter { it.isWritable }
+        val abilityText = if (writable.isEmpty()) {
+            "无可控能力"
+        } else {
+            writable.joinToString("；") { it.describeForPrompt() }
+        }
+        val onlineHint = if (device.isOnline) "" else "[离线]"
+        return "${device.room} ${device.name}$onlineHint（支持: $abilityText）"
+    }
+
     // 第一阶段：判断业务类别与介入态度
     suspend fun evaluateStageOne(userText: String, defaultRoom: String): Result<StageOneResult> {
         val state = mapOf(
@@ -126,8 +143,10 @@ class JevClient(private val getApiKey: () -> String) {
             "numeric_candidates" to numericCandidates
         )
 
+        // 描述里必须带上取值范围与枚举项，否则模型无从判断某个参数是否合法，
+        // 只能猜一个值发出去——真实设备下这会被判为越界而失败。
         val deviceCriteria = candidateDevices.associate { dev ->
-            dev.logicalId to "${dev.room} ${dev.name}（支持: ${dev.capabilities.joinToString(",")}）"
+            dev.logicalId to describeDeviceForPrompt(dev)
         }.toMutableMap()
         deviceCriteria["none"] = "没有匹配的候选设备，或无法确定设备"
 
@@ -142,7 +161,8 @@ class JevClient(private val getApiKey: () -> String) {
                     "set_power_on" to "开机/打开/启动电源",
                     "set_power_off" to "关机/关闭/切断电源",
                     "set_brightness" to "调节亮度（如调亮、调暗、设置特定百分比）",
-                    "set_temperature" to "调节温度（如设置到26度）",
+                    "set_temperature" to "调节空调温度（如设置到26度）",
+                    "set_color_temperature" to "调节色温（如暖光、冷光、设置到4000K）",
                     "set_speed" to "调节风扇风速/档位",
                     "open" to "打开/拉开窗帘",
                     "close" to "关闭/合上窗帘",

@@ -382,7 +382,13 @@ class DecisionEngine(
                 timeFormatted = timeFormatted,
                 text = plan.utteranceText,
                 room = plan.room,
-                statusText = if (plan.status == RunStatus.SUCCEEDED) "✓ 成功" else "✕ 失败",
+                statusText = when (plan.status) {
+                    RunStatus.SUCCEEDED -> "✓ 成功"
+                    // 观察模式没有下发任何指令，显示成"失败"会让用户以为出了错
+                    RunStatus.PLANNED -> "○ 仅计划"
+                    RunStatus.PARTIAL -> "◐ 部分成功"
+                    else -> "✕ 失败"
+                },
                 isSuccess = plan.status == RunStatus.SUCCEEDED,
                 cost = cost
             )
