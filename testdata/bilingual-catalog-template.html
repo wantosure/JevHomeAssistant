@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中英文助手语音测试集 · 1,000 条</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f6f8;color:#182339;font:16px/1.6 system-ui,"Microsoft YaHei",sans-serif}main{max-width:1100px;margin:auto;padding:36px 22px}h1{font-size:30px;line-height:1.2;margin:6px 0 18px}p{color:#576476}.tag{font-size:13px;color:#356758;font-weight:650}.bar{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}input,select,button{font:inherit;padding:10px 12px;border:1px solid #cbd1da;border-radius:8px;background:white}input{flex:1;min-width:220px}button{cursor:pointer}button:disabled{opacity:.4;cursor:default}.card{padding:20px 24px;margin:14px 0;border:1px solid #e0e4eb;border-radius:14px;background:white}.meta{font-size:13px;color:#69778a;overflow-wrap:anywhere}.text{font-size:20px;color:#182339;margin:10px 0}audio{width:100%;max-width:600px;margin:8px 0}pre{white-space:pre-wrap;font:13px/1.6 ui-monospace,monospace;background:#f3f5f8;padding:12px;border-radius:8px;overflow-wrap:anywhere}.warning{border-left:3px solid #dbad5c;padding:8px 14px;color:#775817;background:#fffbf1}.pager{display:flex;align-items:center;gap:14px;margin:24px 0}.note{font-size:14px}a{color:#245d91}.hidden{display:none}
+</style>
+<main>
+<div class="tag">CATSLU × SLURP · 真人语音 · 官方测试分区</div>
+<h1>中英文助手语音测试集</h1>
+<p>中文 500 条，英文 500 条。可试听原录音、搜索转写，查看来源语义标注。</p>
+<p class="warning note">这是语音助手理解测试集。原始意图和槽位已保留；你家设备、执行条件和参数的标准答案尚未映射。中文主要覆盖导航、音乐、天气和视频，不能用它代表中文家居控制准确率。全部录音尚未逐条人工回听。</p>
+<div class="bar"><input id="q" placeholder="搜索转写、意图或参数，例如 闹钟 / light / volume" aria-label="搜索"><select id="lang" aria-label="语言"><option value="">中英文</option><option value="zh-CN">中文</option><option value="en">英文</option></select><select id="domain" aria-label="领域"><option value="">全部来源领域</option></select></div>
+<div id="summary" class="meta" aria-live="polite"></div>
+<section id="list"></section>
+<div class="pager"><button id="prev">上一页</button><span id="page"></span><button id="next">下一页</button></div>
+<p class="note">机器读取：<a href="samples.jsonl">samples.jsonl</a> · <a href="full-source-inventory.jsonl">完整来源索引（19,633 条）</a> · <a href="README.md">来源、许可与使用说明</a></p>
+</main>
+<script id="data" type="application/json">__SAMPLES_JSON__</script>
+<script>
+const samples=JSON.parse(document.getElementById('data').textContent);
+const q=document.getElementById('q'), lang=document.getElementById('lang'), domain=document.getElementById('domain');
+const list=document.getElementById('list'), summary=document.getElementById('summary');
+let page=0; const size=20;
+for(const value of [...new Set(samples.map(x=>x.source_domain))].sort()){
+ const option=document.createElement('option');option.value=value;option.textContent=value;domain.append(option);
+}
+function element(tag,text,cls){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;}
+function render(){
+ const term=q.value.trim().toLowerCase();
+ const rows=samples.filter(x=>(!lang.value||x.language===lang.value)&&(!domain.value||x.source_domain===domain.value)&&(!term||JSON.stringify([x.reference_text,x.source_labels,x.suggested_task_for_review]).toLowerCase().includes(term)));
+ const pages=Math.max(1,Math.ceil(rows.length/size));page=Math.min(page,pages-1);list.replaceChildren();
+ summary.textContent=`匹配 ${rows.length} 条 · 当前第 ${page+1} / ${pages} 页`;
+ for(const x of rows.slice(page*size,(page+1)*size)){
+  const card=element('article',undefined,'card');
+  card.append(element('div',`${x.language==='en'?'英文':'中文'} · ${x.source_dataset} · ${x.source_domain} · ${x.duration_s.toFixed(2)} 秒`,'meta'));
+  card.append(element('p',x.reference_text,'text'));
+  const audio=element('audio');audio.controls=true;audio.preload='none';audio.src=x.audio_path;card.append(audio);
+  if(x.suggested_task_for_review)card.append(element('p',`待复核：建议检查为 ${x.suggested_task_for_review}；原库未给此句语义标签。`,'warning note'));
+  const details=element('details');details.append(element('summary','查看原始语义标注与来源 ID'));
+  details.append(element('pre',JSON.stringify({source_id:x.source_record_id,labels:x.source_labels,dialogue_id:x.dialogue_id,turn_id:x.turn_id,product_expected:x.product_expected},null,2)));card.append(details);list.append(card);
+ }
+ document.getElementById('page').textContent=`${page+1} / ${pages}`;
+ document.getElementById('prev').disabled=page===0;document.getElementById('next').disabled=page===pages-1;
+}
+for(const el of [q,lang,domain])el.addEventListener('input',()=>{page=0;render()});
+document.getElementById('prev').onclick=()=>{page--;render()};document.getElementById('next').onclick=()=>{page++;render()};
+document.addEventListener('play',event=>{if(event.target.tagName==='AUDIO')for(const a of document.querySelectorAll('audio'))if(a!==event.target)a.pause();},true);
+render();
+</script>
+</html>

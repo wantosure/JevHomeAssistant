@@ -1,0 +1,13 @@
+﻿source_dataset,source_id,reference_text,audio_path,duration_s,sample_rate,channels,candidate_decision,review_status
+ST-CMDS-20170001_1,20170001P00287I0113,刚才电脑卡着了,audio/public-stcmds/20170001P00287I0113.wav,3.361,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00061A0096,为什么笔记本电脑嗡嗡的响,audio/public-stcmds/20170001P00061A0096.wav,3.399,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00313I0020,电视里在放勇敢者的游戏,audio/public-stcmds/20170001P00313I0020.wav,3.645,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00021I0032,等我起床开电脑,audio/public-stcmds/20170001P00021I0032.wav,2.935,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00001I0037,听着人家的空调嗡嗡地转,audio/public-stcmds/20170001P00001I0037.wav,4.050,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00153A0044,你不会在看电视又或喝酒吧,audio/public-stcmds/20170001P00153A0044.wav,3.560,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00094A0016,什么叫条件不允许看电视啊,audio/public-stcmds/20170001P00094A0016.wav,3.126,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00174A0088,到韩雪芹家她家有电脑儿,audio/public-stcmds/20170001P00174A0088.wav,3.684,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00031I0066,拿我的铺盖和电脑而已,audio/public-stcmds/20170001P00031I0066.wav,4.527,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00032I0077,你妈不准你玩儿电脑所,audio/public-stcmds/20170001P00032I0077.wav,3.371,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00129A0057,然后再床上玩电脑,audio/public-stcmds/20170001P00129A0057.wav,2.823,16000,1,ignore,needs_listening_and_label_review
+ST-CMDS-20170001_1,20170001P00185A0109,第一个黄灯左拐就是副座,audio/public-stcmds/20170001P00185A0109.wav,3.358,16000,1,ignore,needs_listening_and_label_review

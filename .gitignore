@@ -35,3 +35,10 @@ assistant-development-handoff-v1/
 *.iml
 .DS_Store
 *.log
+
+# 下载的公开语音语料与本机测试录音
+testdata/corpora/
+testdata/audio/
+testdata/*-probe.bin
+testdata/*.zip
+testdata/assistant-bilingual-v1/
